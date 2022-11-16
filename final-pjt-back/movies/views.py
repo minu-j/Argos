@@ -9,6 +9,7 @@ from .serializers import MovieListSerializer
 from django.shortcuts import render
 
 # 영화 리스트
+@api_view(['GET', 'POST'])
 def movie_list(request):
     if request.method == 'GET':
         movies = get_list_or_404(Movie)
