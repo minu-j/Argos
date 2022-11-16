@@ -3,14 +3,14 @@ from django.conf import settings
 
 # 영화 정보 DB - 영화와 N:M 관계
 class Actor(models.Model): # 배우 DB
-    id = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     popularity = models.FloatField()  # 배우 인기도
     profile_path = models.TextField() # 프로필사진 이미지 주소
     
 
 class Director(models.Model): # 감독 DB
-    id = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     popularity = models.FloatField()  # 감독 인기도
     profile_path = models.TextField() # 프로필사진 이미지 주소
@@ -57,8 +57,8 @@ class Movie(models.Model): # 영화 DB
 
 
 class Rating(models.Model): # 별점
-    movie_id = models.IntegerField()
-    user_id = models.IntegerField()
+    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_rating')
     score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
