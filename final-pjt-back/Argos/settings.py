@@ -100,9 +100,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-]
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:8080' ,'http://localhost:8080']
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = 'Argos.urls'
 

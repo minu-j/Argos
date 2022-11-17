@@ -5,8 +5,10 @@ import TicketView from '@/views/TicketView'
 import PlayView from '@/views/PlayView'
 import NewsView from '@/views/NewsView'
 import LoginView from '@/views/LoginView'
+import SignUpView from '@/views/SignUpView'
 import MyPageView from '@/views/MyPageView'
 import NotFound404 from '@/views/NotFound404'
+
 
 Vue.use(VueRouter)
 
@@ -30,6 +32,11 @@ const routes = [
     path: '/news',
     name: 'NewsView',
     component: NewsView
+  },
+  {
+    path: '/signup',
+    name: 'SignUpView',
+    component: SignUpView
   },
   {
     path: '/login',
