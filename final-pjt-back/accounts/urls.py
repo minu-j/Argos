@@ -3,5 +3,5 @@ from . import views
 
 app_name = 'accounts'
 urlpatterns = [
-   path('delete/', views.user_delete), # 회원탈퇴
+   path('<int:user_id>/rated/', views.user_rated_list), # 영화 리스트
 ]
