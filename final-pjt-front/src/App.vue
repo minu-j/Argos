@@ -43,6 +43,9 @@
               </div>
               <router-link to="/mypage">My Page</router-link>
             </li>
+            <!-- 임시 회원가입 -->
+            <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> 
+           
           </ul>
         </div>
       </div>
@@ -50,6 +53,7 @@
     <router-view/>
   </div>
 </template>
+
 
 <style lang="scss">
 @import "@/style/reset.scss";
