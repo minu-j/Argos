@@ -55,9 +55,7 @@ class Movie(models.Model): # 영화 DB
     status = models.CharField(max_length=50, null=True, blank=True)        # 상태
     tagline = models.TextField(null=True, blank=True)                    # 슬로건
 
-    
     # 유저와 영화 관계 N:M 필드
-    wish_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="wish_movies", blank=True) # 보고싶어요 한 유저
     rated_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="rated_movies", through="Rating", blank=True) # 유저의 평가 - 별점 스키마 별도 작성
     
     # 비슷한 영화 추천용 N:M필드
@@ -70,8 +68,8 @@ class Movie(models.Model): # 영화 DB
 
 
 class Rating(models.Model): # 별점용 중계 테이블
-    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_rating')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_rating')
     score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -81,11 +79,11 @@ class Review(models.Model): # 리뷰
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True) 
-    movie_id = models.IntegerField()
-    user_id = models.IntegerField()
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_review')
 
 
-class comment(models.Model): # 리뷰의 댓글
+class Comment(models.Model): # 리뷰의 댓글 
     review = models.ForeignKey(Review, on_delete=models.CASCADE) # 리뷰 외부키
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
