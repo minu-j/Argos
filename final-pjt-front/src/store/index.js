@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 import router from '@/router'
-import axios from 'axios'
+// import { remove } from 'cheerio/lib/api/manipulation'
+
 
 Vue.use(Vuex)
 
@@ -13,7 +15,6 @@ export default new Vuex.Store({
   plugins: [
     createPersistedState()
   ],
-
   state: {
     userLocation: { // 사용자 위치정보
       latitude: null,
@@ -22,14 +23,12 @@ export default new Vuex.Store({
     // 로그인
     movies: [],
     token: null,
+    username: null,
   },
   getters: {
-    isLogin(state){
+    isLogin(state) {
       return state.token ? true : false
-    },
-    loggedIn(state){
-      return !!state.user
-    },
+    }
   },
   mutations: {
     GET_LOCATION(state, payload) { // 위치정보 수집
@@ -37,26 +36,30 @@ export default new Vuex.Store({
       state.userLocation.longitude = payload.longitude
     },
 
-    // 회원 가임 && 로그인 && 로그아웃
     GET_MOVIES(state, movies) {
       state.movies = movies
     },
+    
+    // 회원 가입 && 로그인 && 로그아웃을 위한 토큰 저장, 변경
     SAVE_TOKEN(state, token) {
-      state.token = token
-      router.push({ name: 'HomeView'})
+      state.token = token.key
+      state.username = token.username
+      router.push({name: 'HomeView'})
     },
+
     NULL_TOKEN(state) {
       state.token = null
-      router.push({ name: 'HomeView' })
-    }
+      router.push({name: 'HomeView'})
+    },
 
-
-  },
+  //   DELETE_TOKEN(state){
+  //     state.token = remove.state.token
+  //     router.push({name: 'HomeView'})
+  // },
   actions: {
-    // ---------
     getMovies(context) {
       axios({
-        method: 'get',
+        method: 'GET',
         url: `${API_URL}/api/v1/movies/`,
         headers: {
           Authorizations: `Token ${context.state.token}`
@@ -71,47 +74,40 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    // 회원가입
+    // ACCOUNTS ACTIONS
     signUp(context, payload) {
+      const username = payload.username
+      const password1 = payload.password1
+      const password2 = payload.password2
+
       axios({
         method: 'post',
         url: `${API_URL}/accounts/signup/`,
         data: {
-          username: payload.username,
-          password1: payload.password1,
-          password2: payload.password2,
+          username, password1, password2
         }
       })
-        .then((res) => {
-          // console.log(res)
+        .then(res => {
           context.commit('SAVE_TOKEN', res.data.key)
         })
-        .catch((err) => {
-          console.log(err)
-        })
+        .catch(err => console.log(err))
     },
-    //로그인
     logIn(context, payload) {
+      const username = payload.username
+      const password = payload.password
       axios({
         method: 'post',
         url: `${API_URL}/accounts/login/`,
         data: {
-          username: payload.username,
-          password: payload.password,
+          username, password
         }
       })
-        .then((res) =>{
-          // console.log(res)
-          context.commit('SAVE_TOKEN', res.data.key)
+        .then(res => {
+          context.commit('SAVE_TOKEN', {'key': res.data.key, 'username': username})
         })
-        .catch((err) => {
-          console.log(err)
-        })
+        .catch(err => console.log(err))
+      },
     },
-    // 로그 아웃
-    logOut() {
-      this.$store.commit('NULL_TOKEN', )
-    }
   },
   modules: {
   }
