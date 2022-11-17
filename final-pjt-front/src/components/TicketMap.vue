@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="map-container">
+      <!-- 카카오 지도가 들어갈 -->
       <div id="map"></div>
     </div>
   </div>
@@ -14,7 +15,7 @@ export default {
   data() {
     return {
       TicketMap: null,
-      searchResult: []
+      searchResult: [],
     }
   },
   methods: {
@@ -54,7 +55,6 @@ export default {
           // 현재 위치 기준으로 '영화관' 키워드 검색
           searchPlaces.keywordSearch('영화관', (result, status) => {
             if (status === kakao.maps.services.Status.OK) {
-              console.log(result)
 
               // CGV, 메가박스, 롯데시네마 결과만 가져오기
               result.map((searchResultTheater) => {
@@ -94,7 +94,6 @@ export default {
                   })
                   // 클릭시 이벤트 등록
                   kakao.maps.event.addListener(marker, 'click', () => {
-                    this.selectedTheater = searchResultTheater
                     this.$emit('search-result-theater', searchResultTheater)
                   })
 
@@ -139,7 +138,6 @@ export default {
                   })
                   // 클릭시 이벤트 등록
                   kakao.maps.event.addListener(marker, 'click', () => {
-                    this.selectedTheater = searchResultTheater
                     this.$emit('search-result-theater', searchResultTheater)
                   })
                   clusterer.addMarker(marker)
@@ -178,13 +176,11 @@ export default {
                   })
                   // 클릭시 이벤트 등록
                   kakao.maps.event.addListener(marker, 'click', () => {
-                    this.selectedTheater = searchResultTheater
                     this.$emit('search-result-theater', searchResultTheater)
                   })
                   clusterer.addMarker(marker)
                 }
               })
-              console.log(this.searchResult)
             } else {
               console.log('지도 검색 요청 실패')
             }

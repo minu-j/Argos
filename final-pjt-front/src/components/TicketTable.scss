@@ -1,0 +1,64 @@
+.timetable {
+  display: flex;
+  justify-content: center;
+
+  &-container {
+    width: 90%;
+    max-width: 960px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: rgb(53, 53, 53);
+    padding: 25px 30px 25px 30px;
+    box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+  }
+
+  &-movie {
+
+    &-title {
+      font-family: NanumSquareNeo-Variable;
+      font-size: 16pt;
+      font-weight: 500;
+      margin-right: 10px;
+    }
+
+    &-age {
+      font-size: 14px;
+      color: #afafaf;
+      font-weight: 500;
+    }
+
+    &-theater {
+      color: #afafaf;
+      font-weight: 700;
+      margin-block: 20px;
+
+
+
+      &-time {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 60px;
+        display: inline-block;
+        margin-top: 10px;
+        margin-right: 10px;
+        background-color: #4a4a4a;
+        border-radius: 20px;
+        text-shadow: 1px 1px 20px black;
+
+        &:hover {
+          outline: 3px white solid;
+        }
+
+        & a {
+          color: #ffffff;
+          text-decoration: none;
+
+          &:hover {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
