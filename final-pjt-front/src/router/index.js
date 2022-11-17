@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '@/views/HomeView'
+import MovieDetail from '@/components/MovieDetail'
 import TicketView from '@/views/TicketView'
 import PlayView from '@/views/PlayView'
 import NewsView from '@/views/NewsView'
@@ -47,6 +48,11 @@ const routes = [
     path: '/mypage',
     name: 'MyPageView',
     component: MyPageView
+  },
+  {
+    path: '/:movie_id',
+    name: 'MovieDetail',
+    component: MovieDetail
   },
   {
     path: '*',
