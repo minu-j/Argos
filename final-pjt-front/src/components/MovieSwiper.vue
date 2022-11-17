@@ -6,7 +6,7 @@
     <div class="swiper">
       <swiper class="swiper-row" :options="swiperOption">
         <swiper-slide v-for="(movie, index) in movies" :key="`movie-${index}`">
-          <div class="movie-card">
+          <div @click="goDetail(index)" class="movie-card">
             <span class="movie-card--title">{{ movie.title }}</span>
             <img class="movie-card--thumbnail" :src="`${ movie.thumbnail }`">
           </div>
@@ -65,6 +65,11 @@
       ],
       }
     },
+    methods: {
+      goDetail(id) {
+        this.$router.push({ name: 'MovieDetail', params: { movie_id: id }})
+      }
+    }
   }
 </script>
 
