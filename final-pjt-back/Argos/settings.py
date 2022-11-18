@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
 
     #  # OpenAPI 3.0
-    # 'drf_spectacular',
+    'drf_spectacular',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -76,15 +76,15 @@ REST_FRAMEWORK = {
     ],
 
     # spectacular Settings
-#     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-# }
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
-# SPECTACULAR_SETTINGS = {
-    # 'TITLE': 'Your Project API',
-    # 'DESCRIPTION': 'Your project description',
-    # 'VERSION': '1.0.0',
-    # 'SERVE_INCLUDE_SCHEMA': False,
-    # # OTHER SETTINGS
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
 
 
@@ -100,7 +100,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:8080' ,'http://localhost:8080']
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:8080' ,'http://localhost:8081']
 
 CORS_ALLOW_CREDENTIALS = True
 

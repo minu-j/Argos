@@ -37,8 +37,7 @@
               </div>
               <!-- 임시 로그인/ 로그아웃 -->
               <router-link v-if="!isLogin" id="nav-menu" :to="{ name: 'LoginView' }">Login</router-link>
-              <button v-else @click="logOut">LogOut</button>
-              <!-- <button @click="signOut">signOut</button>               -->
+              <button v-else @click="logOut">LogOut</button>              
             </li>
             <li class="nav-item nav-item--rightside">
               <div class="nav-item--select">
@@ -68,16 +67,11 @@ export default {
       alert('로그아웃 되었습니다.')
       this.$router.push({ name:'HomeView' })
     },
-    // signOut() {
-    //     this.$store.commit('DELETE_TOKEN')
-    //     alert('성공적으로 회원탈퇴 처리되었습니다.')
-    //     this.$router.push({ name:'HomeView' })
-    // },
-    computed: {
-      isLogin() {
-        return this.$store.getters.isLogin
-      },
-    }
+  },
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    },
   }
 }
 </script>
