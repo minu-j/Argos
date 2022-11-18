@@ -15,3 +15,9 @@ def user_rated_list(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     serializer = UserRatedSerializers(user)
     return Response(serializer.data)
+
+# 사용자가 좋아요/위시리스트/평점을 준 영화 목록 조회
+@api_view(['GET'])
+def user_movie_list(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    print(user)

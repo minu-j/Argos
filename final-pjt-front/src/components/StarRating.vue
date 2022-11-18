@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'StarRating',
   data() {
@@ -23,26 +25,48 @@ export default {
       notScore: [1, 2, 3, 4, 5],
     }
   },
+  props: {
+    movieData: Object,
+  },
   methods: {
-    getGold(n) {
-      for (let i = 1; i < n + 1; i++) {
-        const star = document.querySelector(`#star-${i}`)
-        star.setAttribute('fill', "#ffed75")
-      }
-    },
-    clearGold() {
-      for (let i = 1; i < 6; i++) {
-        const star = document.querySelector(`#star-${i}`)
-        star.setAttribute('fill', "#eee")
-      }
-    },
-    rating(n) {
+    rating(n) {  // 별 클릭시 별점 등록
+      const movie_id = this.movieData.id
+      const API_URL = 'http://127.0.0.1:8000'
+      const Token = this.$store.state.token
+      console.log(n)
+      axios({
+        method: 'post',
+        url: `${API_URL}/api/v1/movie/${movie_id}/rating/`,
+        headers: {
+          Authorization: `Token ${Token}`
+        },
+        data: { score: n }
+      })
+        .then((res) => {
+          console.log(res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
       for (let i = 1; i < n + 1; i++) {
         const star = document.querySelector(`#star-${i}`)
         star.removeAttribute('fill')
         star.setAttribute('fill', "#ffed75")
         this.score.push(i)
         this.notScore.pop()
+      }
+    },
+    getGold(n) {  // 마우스 오버시 별 노란색으로 채우기
+      for (let i = 1; i < n + 1; i++) {
+        const star = document.querySelector(`#star-${i}`)
+        star.setAttribute('fill', "#ffed75")
+      }
+    },
+    clearGold() {  // 마우스 벗어나면 별 초기화
+      for (let i = 1; i < 6; i++) {
+        const star = document.querySelector(`#star-${i}`)
+        star.setAttribute('fill', "#eee")
       }
     },
     readyClearRating() {
@@ -62,6 +86,7 @@ export default {
     clearRating() {
       this.score = []
       this.notScore = [1, 2, 3, 4, 5]
+      console.log('delete')
     }
   },
 }

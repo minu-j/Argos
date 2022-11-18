@@ -58,23 +58,24 @@ export default new Vuex.Store({
   // },
   },
   actions: {
-    getMovies(context) {
-      axios({
-        method: 'GET',
-        url: `${API_URL}/api/v1/movies/`,
-        headers: {
-          Authorizations: `Token ${context.state.token}`
-        }
-      })
-        .then((res) =>{
-          // console.log(res, context)
-          // console.log(res.data)
-          context.commit('GET_MOVIES', res.data)
-        })
-        .catch((err) =>{
-          console.log(err)
-        })
-    },
+    // getMovie(store, context) {
+    //   console.log(`Token ${store.state.token}`)
+    //   axios({
+    //     method: 'GET',
+    //     url: `${API_URL}/api/v1/movie/${context.movie_id}/`,
+    //     headers: {
+    //       Authorization: `Token ${store.state.token}`
+    //     }
+    //   })
+    //     .then((res) =>{
+    //       console.log(res.data)
+    //       // // console.log(res.data)
+    //       // context.commit('GET_MOVIES', res.data)
+    //     })
+    //     .catch((err) =>{
+    //       console.log(err)
+    //     })
+    // },
     // ACCOUNTS ACTIONS
     signUp(context, payload) {
       const username = payload.username
@@ -107,7 +108,7 @@ export default new Vuex.Store({
           context.commit('SAVE_TOKEN', {'key': res.data.key, 'username': username})
         })
         .catch(err => console.log(err))
-      },
+  },
   },
 })
 
