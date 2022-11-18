@@ -13,6 +13,68 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username',)
 
 
+############################ 영화 정보 ############################
+
+
+class GenreListSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Genre
+        fields = '__all__'
+
+
+class ActorListSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Actor
+        fields = '__all__'
+
+
+class DirectorListSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Director
+        fields = '__all__'
+
+
+class KeywordListSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Keyword
+        fields = '__all__'
+
+
+class VideoListSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Video
+        fields = '__all__'
+
+
+class ProviderListSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Provider
+        fields = '__all__'
+
+
+############################ 영화 조회 ############################
+
+
+# 전체 영화의 모든 속성 리스트 조회
+class AllMovieListSerializer(serializers.ModelSerializer): 
+    genres = GenreListSerializer(many=True, read_only=True)
+    actors = ActorListSerializer(many=True, read_only=True)
+    directors = DirectorListSerializer(many=True, read_only=True)
+    keywords = KeywordListSerializer(many=True, read_only=True)
+    videos = VideoListSerializer(many=True, read_only=True)
+    providers = ProviderListSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+
 # 전체 영화 리스트 조회
 class MovieListSerializer(serializers.ModelSerializer): 
     
@@ -21,16 +83,22 @@ class MovieListSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 
-# 영화 pk, 제목만 조회
-class MovieTitleSerializer(serializers.ModelSerializer):
+# 전체 영화 pk, 제목만 조회
+class MovieSearchSerializer(serializers.ModelSerializer):
         
         class Meta:
             model = Movie
-            fields = ('pk', 'title')
+            fields = ('pk', 'title', 'poster_path')
         
 
 # 단일 영화 항목 조회
 class MovieSerializer(serializers.ModelSerializer):
+    genres = GenreListSerializer(many=True, read_only=True)
+    actors = ActorListSerializer(many=True, read_only=True)
+    directors = DirectorListSerializer(many=True, read_only=True)
+    keywords = KeywordListSerializer(many=True, read_only=True)
+    videos = VideoListSerializer(many=True, read_only=True)
+    providers = ProviderListSerializer(many=True, read_only=True)
     
     # 영화 가져올때 해당 영화의 리뷰도 함께 가져오기
     class ReviewListSerializer(serializers.ModelSerializer):
@@ -57,24 +125,95 @@ class MovieSerializer(serializers.ModelSerializer):
     
         class Meta:
             model = User
-            fields = ('username', 'user_rating')
+            fields = ('id', 'username', 'user_rating')
             
     rated_users = RatedUserSerializer(many=True, read_only=True)
 
     class Meta:
         model = Movie
         fields = '__all__'
+
+
+########################### 장르 ######################################
+
+class GenreMovieSerializer(serializers.ModelSerializer):
+    movie_set = MovieSearchSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Genre
+        fields = '__all__'
+
+
+
+########################### 배우 ######################################
+
+class ActorMovieSerializer(serializers.ModelSerializer):
+    movie_set = MovieSearchSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Actor
+        fields = '__all__'
+
+
+
+########################### 감독 ######################################
+
+class DirectorMovieSerializer(serializers.ModelSerializer):
+    movie_set = MovieSearchSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Director
+        fields = '__all__'
+
+
+
+########################### 키워드 ######################################
+
+class KeywordMovieSerializer(serializers.ModelSerializer):
+    movie_set = MovieSearchSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Keyword
+        fields = '__all__'
+
+
+
+########################### 예고편 ######################################
+
+class VideoMovieSerializer(serializers.ModelSerializer):
+    movie_set = MovieSearchSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Video
+        fields = '__all__'
+
+
+
+########################### 공급자 ######################################
+
+class ProviderMovieSerializer(serializers.ModelSerializer):
+    movie_set = MovieSearchSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Provider
+        fields = '__all__'
+
+
+
+############################ 별점 ############################
         
 
 # 별점 조회, 작성, 삭제
 class RatingSerializer(serializers.ModelSerializer):
-
-    movie = MovieTitleSerializer(read_only=True)
+    movie = MovieSearchSerializer(read_only=True)
     user = UserSerializer(read_only=True)
     
     class Meta:
         model = Rating
         fields = '__all__'
+
+
+############################ 리뷰 ############################
 
 
 # 리뷰 조회, 작성, 수정, 삭제
@@ -88,7 +227,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     
     comment_set = CommentListSerializer(many=True, read_only=True)
     comment_count = serializers.IntegerField(source='comment_set.count', read_only=True)
-    movie = MovieTitleSerializer(read_only=True)
+    movie = MovieSearchSerializer(read_only=True)
     user = UserSerializer(read_only=True)
     
     class Meta:
@@ -96,9 +235,11 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+############################ 댓글 ############################
+
+
 # 댓글 조회, 작성, 수정, 삭제
 class CommentSerializer(serializers.ModelSerializer): 
-    
     review = ReviewSerializer(read_only=True)
     user = UserSerializer(read_only=True)
     

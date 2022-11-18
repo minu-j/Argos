@@ -581,12 +581,12 @@
     },
     methods: {
       goDetail(id) {
-        this.$router.push({ name: 'MovieDetail', params: { movie_id: id }})
+        this.$router.push({ name: 'MovieDetail', params: { movie_id: id }, query: {movie_id: id}})
       }
     }
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import './MovieSwiper.scss';
 </style>

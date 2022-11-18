@@ -9,4 +9,5 @@ app_name = 'accounts'
 
 urlpatterns = [
    path('<int:user_id>/rated/', views.user_rated_list), # 영화 리스트
+   path('<int:user_id>/list/', views.user_movie_list), # 평점 준 영화 리스트
 ]
