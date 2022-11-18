@@ -56,6 +56,7 @@ export default new Vuex.Store({
   //     state.token = remove.state.token
   //     router.push({name: 'HomeView'})
   // },
+  },
   actions: {
     getMovies(context) {
       axios({
@@ -107,10 +108,8 @@ export default new Vuex.Store({
         })
         .catch(err => console.log(err))
       },
-    },
   },
-  modules: {
-  }
 })
+
 
 

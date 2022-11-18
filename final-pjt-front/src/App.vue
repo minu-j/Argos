@@ -15,19 +15,19 @@
               <div class="nav-item--select">
                 <div class="nav-item--select-bg"></div>
               </div>
-              <router-link to="/ticket">Ticket</router-link>
+              <router-link to="/ticket">TICKET</router-link>
             </li>
             <li class="nav-item">
               <div class="nav-item--select">
                 <div class="nav-item--select-bg"></div>
               </div>
-              <router-link to="/play">Play</router-link>
+              <router-link to="/play">PLAY</router-link>
             </li>
             <li class="nav-item">
               <div class="nav-item--select">
                 <div class="nav-item--select-bg"></div>
               </div>
-              <router-link to="/news">News</router-link>
+              <router-link to="/news">NEWS</router-link>
             </li>
           </ul>
           <ul class="navbar-nav">
@@ -36,18 +36,18 @@
                 <div class="nav-item--select-bg"></div>
               </div>
               <!-- 임시 로그인/ 로그아웃 -->
-              <router-link v-if="!isLogin" id="nav-menu" :to="{ name: 'LoginView' }">Login</router-link>
-              <button v-else @click="logOut">LogOut</button>
+              <router-link v-if="!isLogin" id="nav-menu" :to="{ name: 'LoginView' }">LOGIN</router-link>
+              <button v-else @click="logOut">LOGOUT</button>
               <!-- <button @click="signOut">signOut</button>               -->
             </li>
             <li class="nav-item nav-item--rightside">
               <div class="nav-item--select">
                 <div class="nav-item--select-bg"></div>
               </div>
-              <router-link to="/mypage">My Page</router-link>
+              <router-link to="/mypage">MYPAGE</router-link>
             </li>
             <!-- 임시 회원가입 -->
-            <router-link v-if="!isLogin" id="nav-menu" :to="{ name: 'SignUpView' }">SignUp</router-link>
+            <router-link v-if="!isLogin" id="nav-menu" :to="{ name: 'SignUpView' }">SIGNUP</router-link>
 
            
           </ul>
@@ -67,17 +67,18 @@ export default {
       this.$store.commit('NULL_TOKEN')
       alert('로그아웃 되었습니다.')
       this.$router.push({ name:'HomeView' })
+
     },
     // signOut() {
     //     this.$store.commit('DELETE_TOKEN')
     //     alert('성공적으로 회원탈퇴 처리되었습니다.')
     //     this.$router.push({ name:'HomeView' })
     // },
-    computed: {
-      isLogin() {
-        return this.$store.getters.isLogin
-      },
-    }
+  },
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    },
   }
 }
 </script>
