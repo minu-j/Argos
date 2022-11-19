@@ -8,6 +8,20 @@ import router from '@/router'
 
 Vue.use(Vuex)
 
+// const requireAuth = () => (from, to, next) => {
+//   const JSONtoken = JSON.parse(localStorage.getItem('vuex'))
+//   const token = JSONtoken.token
+//   // 로그인 되어있으면 next로 이동
+//   if (token) {
+//     return next()
+//   }else{ // 로그인 안 되어있으면 로그인 페이지로 이동
+//   alert('로그인이 필요한 서비스입니다.')
+//   next('/login')
+//   // 어디로 갈 지 담겨있음
+//   // next('from.fullPath')}
+//  }
+// }
+
 const API_URL = 'http://127.0.0.1:8000'
 
 export default new Vuex.Store({
@@ -45,8 +59,8 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token.key
       state.username = token.username
-      
-      
+      router.push({ name:'LoginView' })
+
     },
     SAVE_USER_ID(state, id) {
       state.userId = id
@@ -64,25 +78,7 @@ export default new Vuex.Store({
   // },
   },
   actions: {
-    // getMovie(store, context) {
-    //   console.log(`Token ${store.state.token}`)
-    //   axios({
-    //     method: 'GET',
-    //     url: `${API_URL}/api/v1/movie/${context.movie_id}/`,
-    //     headers: {
-    //       Authorization: `Token ${store.state.token}`
-    //     }
-    //   })
-    //     .then((res) =>{
-    //       console.log(res.data)
-    //       // // console.log(res.data)
-    //       // context.commit('GET_MOVIES', res.data)
-    //     })
-    //     .catch((err) =>{
-    //       console.log(err)
-    //     })
-    // },
-    // ACCOUNTS ACTIONS
+
     signUp(context, payload) {
       const username = payload.username
       const password1 = payload.password1
