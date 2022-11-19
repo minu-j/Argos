@@ -11,13 +11,22 @@ from .serializers import *
 User = get_user_model()
 
 @api_view(['GET'])
-def user_rated_list(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
-    serializer = UserRatedSerializers(user)
+ # 로그인시 유저 정보 조회
+def get_user_info(request, username):
+    user = get_object_or_404(User, username=username)
+    serializer = UserInfoSerializers(user)
     return Response(serializer.data)
 
-# 사용자가 좋아요/위시리스트/평점을 준 영화 목록 조회
+# 사용자가 평점 준 전체 목록 조회
 @api_view(['GET'])
-def user_movie_list(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
-    print(user)
+def get_user_rating_list(request, user_pk):
+    user = get_object_or_404(User, pk=user_pk)
+    serializer = UserRatingListSerializers(user)
+    return Response(serializer.data)
+
+# 사용자가 단일 영화에 준 평점 조회
+@api_view(['GET'])
+def get_user_rating(request, movie_pk, user_pk):
+    rating = get_object_or_404(Rating, movie_id=movie_pk, user_id=user_pk)
+    serializer = RatingSerializers(rating)
+    return Response(serializer.data)
