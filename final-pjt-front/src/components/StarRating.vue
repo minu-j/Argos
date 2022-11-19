@@ -125,7 +125,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .star {
   margin-right: 5px;
 }

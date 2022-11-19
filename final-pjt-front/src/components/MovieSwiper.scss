@@ -1,22 +1,28 @@
-.swiper { // swiper
+#movie-swiper { // swiper
     overflow: hidden;
 
   &-title {
-    width: 100%;
-    text-align: center;
-    font-family: NanumSquareNeo-Variable;
-    
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
 
-    &--item {
-      display: inline-block;
-      text-align: left;
-      max-width: 900px;
-      font-size: 24px;
-      font-weight: 700;
-      padding-inline: 30px;
-      margin: 0px;
+    &-box {
+      width: 900px;
+      font-family: NanumSquareNeo-Variable;
+      
+  
+      &--item {
+        display: inline-block;
+        text-align: left;
+        max-width: 900px;
+        font-size: 24px;
+        font-weight: 700;
+        padding-inline: 30px;
+        margin: 0px;
+      }
     }
   }
+
   &-row {
       height: 220px;
       width: 110%;
@@ -30,7 +36,7 @@
       }
   }
 
-  .movie-card { // 각 카드별 설정
+  #movie-card { // 각 카드별 설정
     cursor: pointer;
     width: 90%;
     height: 85%;

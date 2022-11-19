@@ -8,7 +8,7 @@
           {{theater.num}}
           <div class="timetable-movie-theater-schedule">
             <div class="timetable-movie-theater-time" v-for="(schedule, index) in theater.schedule" :key="`schedule-${index}`">
-              <a :href="schedule.link" >
+              <a :href="schedule.link" target="_blank">
                 {{ schedule.time }}
               </a>
             </div>
@@ -86,6 +86,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import './TicketTable.scss';
 </style>

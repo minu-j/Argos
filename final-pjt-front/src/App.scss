@@ -42,6 +42,11 @@ nav {
   margin-right: 40px;
   transition: all 0.2s ease-out;
 
+  &:hover {
+    transition: all 0.2s;
+    transform: scale(1.05);
+  }
+
   &:active {
     -webkit-animation: jello-horizontal 0.9s both;
 	        animation: jello-horizontal 0.9s both;
@@ -71,6 +76,8 @@ nav {
 
     &:hover {
       color: gray;
+      transition: all 0.2s;
+      transform: scale(1.05);
     }
   
     &.router-link-active {

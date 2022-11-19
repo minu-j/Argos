@@ -11,6 +11,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "./NotFound404.scss";
 </style>

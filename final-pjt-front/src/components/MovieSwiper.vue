@@ -1,15 +1,17 @@
 <template>
   <div>
-    <div class="swiper-title">
-      <div class="swiper-title--item">지금 뜨는 영화</div>
+    <div id="movie-swiper-title">
+      <div id="movie-swiper-title-box">
+        <div id="movie-swiper-title-box--item">{{ swiperTitle }}</div>
+      </div>
     </div>
     <!-- 가로 스크롤 카드 스와이퍼 -->
-    <div class="swiper">
-      <swiper class="swiper-row" :options="swiperOption">
+    <div id="movie-swiper">
+      <swiper id="movie-swiper-row" :options="swiperOption">
         <swiper-slide v-for="(movie, index) in movieData" :key="`movie-${index}`">
-          <div @click="goDetail(movie.pk)" class="movie-card">
-            <span class="movie-card--title">{{ movie.fields.title }}</span>
-            <img class="movie-card--thumbnail" :src="`https://image.tmdb.org/t/p/w500${ movie.fields.backdrop_path }`">
+          <div @click="goDetail(movie.pk)" id="movie-card">
+            <span id="movie-card--title">{{ movie.fields.title }}</span>
+            <img id="movie-card--thumbnail" :src="`https://image.tmdb.org/t/p/w500${ movie.fields.backdrop_path }`">
           </div>
         </swiper-slide>
       </swiper>
@@ -37,6 +39,7 @@
             prevEl: '.swiper-button-prev'
           }
         },
+        swiperTitle: '지금 뜨는 영화',
         movieData: [ // dummy data
           {
             "model": "movies.movie",
@@ -587,6 +590,6 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import './MovieSwiper.scss';
 </style>

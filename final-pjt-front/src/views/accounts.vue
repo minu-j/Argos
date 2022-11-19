@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/style/reset.scss";
 @import "@/App.scss";
 </style>
