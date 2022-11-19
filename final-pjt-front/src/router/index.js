@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import HomeView from '@/views/HomeView'
 import MovieDetail from '@/components/MovieDetail'
 import TicketView from '@/views/TicketView'
@@ -11,62 +11,98 @@ import MyPageView from '@/views/MyPageView'
 import NotFound404 from '@/views/NotFound404'
 
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
+export const constantRoutes = [
   {
     path: '/',
     name: 'HomeView',
-    component: HomeView
+    component: HomeView,
+    meta: {
+      title: 'ARGOS'
+    }
   },
   {
     path: '/ticket',
     name: 'TicketView',
-    component: TicketView
+    component: TicketView,
+    meta: {
+      title: 'ARGOS Ticket'
+    }
   },
   {
     path: '/play',
     name: 'PlayView',
-    component: PlayView
+    component: PlayView,
+    meta: {
+      title: 'ARGOS Play'
+    }
   },
   {
     path: '/news',
     name: 'NewsView',
-    component: NewsView
+    component: NewsView,
+    meta: {
+      title: 'ARGOS News'
+    }
   },
   {
     path: '/signup',
     name: 'SignUpView',
-    component: SignUpView
+    component: SignUpView,
+    meta: {
+      title: 'ARGOS 회원가입'
+    }
   },
   {
     path: '/login',
     name: 'LoginView',
-    component: LoginView
+    component: LoginView,
+    meta: {
+      title: 'ARGOS 로그인'
+    }
   },
   {
     path: '/mypage',
     name: 'MyPageView',
-    component: MyPageView
+    component: MyPageView,
+    meta: {
+      title: 'ARGOS 마이페이지'
+    }
   },
   {
     path: '/:movie_id',
     name: 'MovieDetail',
     component: MovieDetail,
+    meta: {
+      title: 'ARGOS'
+    },
     props: true
   },
   {
     path: '*',
     name: 'NotFound404',
-    component: NotFound404
+    component: NotFound404,
+    meta: {
+      title: 'ARGOS?'
+    }
   },
 ]
 
-const router = new VueRouter({
+const createRouter = () => new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRoutes
 })
+
+const router = createRouter()
+
+router.afterEach((to) => {
+  const title = to.meta.title === undefined ? 'ARGOS' : to.meta.title;
+  Vue.nextTick(() => {
+    document.title = title;
+  });
+});
 
 
 export default router

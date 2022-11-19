@@ -8,6 +8,7 @@ app_name = 'accounts'
 # 비밀번호 찾기(POST) : account/password/reset/
 
 urlpatterns = [
-   path('<int:user_id>/rated/', views.user_rated_list), # 영화 리스트
-   path('<int:user_id>/list/', views.user_movie_list), # 평점 준 영화 리스트
+   path('userinfo/<str:username>/', views.get_user_info), # 로그인시 유저 정보 조회
+   path('prifile/rating/<int:user_pk>/', views.get_user_rating_list), # 사용자가 별점 준 영화 모아보기
+   path('rating/<int:movie_pk>/<int:user_pk>/', views.get_user_rating), # 유저의 단일영화 별점 조회
 ]

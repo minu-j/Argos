@@ -8,7 +8,13 @@ module.exports = defineConfig({
         "pathRewrite":{'^/':''},
         "changeOrigin":true,
         "secure":false
-      }
+      },
+      // '/boxoffice': {
+      //   "target":'https://www.kobis.or.kr/kobisopenapi/webservice/rest',
+      //   "pathRewrite":{'^/':''},
+      //   "changeOrigin":true,
+      //   "secure":false
+      // }
     }
   }
 })

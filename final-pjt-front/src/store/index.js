@@ -24,6 +24,7 @@ export default new Vuex.Store({
     movies: [],
     token: null,
     username: null,
+    userId: null,
   },
   getters: {
     isLogin(state) {
@@ -44,9 +45,14 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token.key
       state.username = token.username
+      
+      
+    },
+    SAVE_USER_ID(state, id) {
+      state.userId = id
+      console.log(id)
       router.push({name: 'HomeView'})
     },
-
     NULL_TOKEN(state) {
       state.token = null
       router.push({name: 'HomeView'})
@@ -106,6 +112,13 @@ export default new Vuex.Store({
       })
         .then(res => {
           context.commit('SAVE_TOKEN', {'key': res.data.key, 'username': username})
+          axios({
+            method: 'get',
+            url: `${API_URL}/accounts/userinfo/${username}/`
+          })
+            .then(res => {
+              context.commit('SAVE_USER_ID', res.data.id)
+            })
         })
         .catch(err => console.log(err))
   },
