@@ -13,16 +13,56 @@ class UserInfoSerializers(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
-
-class UserRatingListSerializers(serializers.ModelSerializer):
-
-    class Meta:
-        model = User
-        fields = '__all__'
-
-# 해당 영화에 사용자가 준 별점
+# 영화에 사용자가 준 별점
 class RatingSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Rating
         fields = ('id', 'user_id', 'score',)
+
+
+class RatingListSerializers(serializers.ModelSerializer):
+
+    class MovieSerializers(serializers.ModelSerializer):
+
+        class GenreSerializers(serializers.ModelSerializer):
+
+            class Meta:
+                model = Genre
+                fields = '__all__'
+            
+        genres = GenreSerializers(many=True)
+
+        class ActorSerializers(serializers.ModelSerializer):
+
+            class Meta:
+                model = Actor
+                fields = '__all__'
+            
+        actors = ActorSerializers(many=True)
+
+        class DirectorSerializers(serializers.ModelSerializer):
+
+            class Meta:
+                model = Director
+                fields = '__all__'
+            
+        directors = DirectorSerializers(many=True)
+
+        class KeywordSerializers(serializers.ModelSerializer):
+
+            class Meta:
+                model = Keyword
+                fields = '__all__'
+            
+        keywords = KeywordSerializers(many=True)
+
+        class Meta:
+            model = Movie
+            fields = ('id', 'title', 'poster_path', 'backdrop_path', 'genres', 'actors', 'directors', 'keywords')
+
+    movie = MovieSerializers()
+
+    class Meta:
+        model = Rating
+        fields = '__all__'

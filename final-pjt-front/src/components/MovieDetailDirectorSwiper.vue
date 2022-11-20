@@ -7,7 +7,7 @@
     <div class="swiper">
       <swiper class="swiper-detail-row" :options="swiperOption">
         <swiper-slide v-for="(director, index) in directorData" :key="`movie-${index}`">
-          <div @click="goDetail(director.key)" class="movie-card">
+          <div @click="goDetail(director)" class="movie-card">
             <span class="movie-card--title">{{ director.name }}</span>
             <img class="movie-card--thumbnail" :src="`https://image.tmdb.org/t/p/w500${ director.profile_path }`">
           </div>
@@ -42,6 +42,11 @@
         },
       }
     },
+    methods: {
+      goDetail(director) {
+        this.$emit('active-director-modal', director)
+      }
+    }
   }
 </script>
 

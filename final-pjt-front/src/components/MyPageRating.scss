@@ -1,0 +1,22 @@
+.rating {
+  width: 90%;
+  max-width: 700px;
+  margin-top: 120px;
+
+  &-title {
+    font-family: 'NanumSquareNeo-Variable';
+    font-weight: 600;
+    font-size: 24pt;
+  }
+
+  &-rating {
+
+    &-goldstar {
+      color: #ffed75;
+      font-size: 20pt;
+    }
+    &-silverstar {
+      color: #eee;
+    }
+  }
+}

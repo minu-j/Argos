@@ -19,6 +19,7 @@
     "vue": "^2.7.14",
     "vue-awesome-swiper": "^4.1.1",
     "vue-router": "^3.5.1",
+    "vue-wordcloud": "^1.1.1",
     "vuex": "^3.6.2",
     "vuex-persistedstate": "^4.1.0"
   },
