@@ -1,14 +1,45 @@
 <template>
   <div>
-      {{ratedMovieData}}
     <div class="rating">
       <div class="rating-title">내가 평가한 영화</div>
-      <div v-for="(ratedMovie, index) in ratedMovieData" :key="`rated-movie-${index}`" class="rating-row">
+      <div v-if="ratedMovieData[5].length > 0" class="rating-row">
         <span class="rating-rating">
-          <span class="rating-rating-goldstar">★{{6 - index}}</span>
-          <span>0개</span>
+          <span class="rating-rating-goldstar">★★★★★</span>
+          <span class="rating-rating-num">{{ ratedMovieData[5].length}}개</span>
         </span>
-        <my-page-rating-swiper/>
+        <my-page-rating-swiper :rated-movie-data="ratedMovieData[5]"/>
+      </div>
+      <div v-if="ratedMovieData[4].length > 0" class="rating-row">
+        <span class="rating-rating">
+          <span class="rating-rating-goldstar">★★★★</span>
+          <span class="rating-rating-silverstar">★</span>
+          <span class="rating-rating-num">{{ ratedMovieData[4].length}}개</span>
+        </span>
+        <my-page-rating-swiper :rated-movie-data="ratedMovieData[4]"/>
+      </div>
+      <div v-if="ratedMovieData[3].length > 0" class="rating-row">
+        <span class="rating-rating">
+          <span class="rating-rating-goldstar">★★★</span>
+          <span class="rating-rating-silverstar">★★</span>
+          <span class="rating-rating-num">{{ ratedMovieData[3].length}}개</span>
+        </span>
+        <my-page-rating-swiper :rated-movie-data="ratedMovieData[3]"/>
+      </div>
+      <div v-if="ratedMovieData[2].length > 0" class="rating-row">
+        <span class="rating-rating">
+          <span class="rating-rating-goldstar">★★</span>
+          <span class="rating-rating-silverstar">★★★</span>
+          <span class="rating-rating-num">{{ ratedMovieData[2].length}}개</span>
+        </span>
+        <my-page-rating-swiper :rated-movie-data="ratedMovieData[2]"/>
+      </div>
+      <div v-if="ratedMovieData[1].length > 0" class="rating-row">
+        <span class="rating-rating">
+          <span class="rating-rating-goldstar">★</span>
+          <span class="rating-rating-silverstar">★★★★</span>
+          <span class="rating-rating-num">{{ ratedMovieData[1].length}}개</span>
+        </span>
+        <my-page-rating-swiper :rated-movie-data="ratedMovieData[1]"/>
       </div>
     </div>
   </div>

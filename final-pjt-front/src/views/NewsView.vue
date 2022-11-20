@@ -59,6 +59,10 @@ export default {
     }
   },
   mounted() {
+    // 뉴스를 계속 불러오기만 하면, 마운트할때마다 vuex 스토리지에 뉴스가 남아있고,
+    // 새로운 계속 뉴스가 뒤로 쌓이는 오류가 있어서,
+    // 뉴스 처음 들어올 때 그동안 쌓인 뉴스 날려주기.
+    this.$store.dispatch('clearNews')
     this.createLoader()
     const targetNews = document.querySelector('#get-next-row')
     console.log(targetNews)

@@ -60,7 +60,7 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token.key
       state.username = token.username
-      
+      //////////////////////////// 여기서 영화선택 페이지로 넘어가게
       
     },
     SAVE_USER_ID(state, id) {
@@ -97,6 +97,11 @@ export default new Vuex.Store({
       })
       state.newsPage++
     },
+    CLEAR_NEWS(state) {
+      state.newsTable = []
+      state.newsPage = 0
+      console.log('잘삭제함', state.newsTable)
+    }
   },
   actions: {
     ////////////////// 인증 관련 ///////////////////
@@ -201,6 +206,10 @@ export default new Vuex.Store({
         })
     },
   
+    ////////////////// 뉴스 처음 로드할 때, vuex에 쌓인 뉴스 날리기 //////////////////////
+    clearNews(context) {
+      context.commit('CLEAR_NEWS')
+    },
     ////////////////// 뉴스 데이터 불러오기 //////////////////////
     getNews(context, page) {
       const newsTable = []
@@ -235,7 +244,7 @@ export default new Vuex.Store({
             console.log('뉴스 데이터 수신 실패', error)
           })
         }
-    }
+    },
   },
 })
 

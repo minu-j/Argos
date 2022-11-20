@@ -5,7 +5,7 @@ import json
 # create_db_1과 숫자가 같아야 함.
 # 2 ~ 500
 # 1 page = 20 movies
-page_num = 3
+page_num = 10
 
 TMDB_API_KEY = '51790401a4babecb78bc0eca24db117c'
 

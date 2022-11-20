@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="analysis">
-      <div class="analysis-desctiption">평가해주신 영화를 바탕으로 취향을 분석해봤어요.</div>
+      <div class="analysis-desctiption">
+        평가해주신 {{ userRating[1].length + userRating[2].length + userRating[3].length + userRating[4].length + userRating[5].length }}개의 영화를 바탕으로 취향을 분석해봤어요.
+      </div>
       <div class="analysis-title">{{userInfo}}님이 선호하는 키워드</div>
       <div v-if="likeKeyword.length">
         <wordcloud
@@ -75,7 +77,7 @@ export default {
     console.log(`Token ${Token}`)
     axios({
       method: 'GET',
-      url: `${API_URL}/accounts/recommend/${user_id}/`,
+      url: `${API_URL}/accounts/analysis/${user_id}/`,
       headers: {
         Authorization: `Token ${Token}`
       }
@@ -86,7 +88,8 @@ export default {
         this.likeDirector = res.data.like_director
         this.likeGenre = res.data.like_genre
         this.likeKeyword = res.data.like_keyword
-        this.$emit('rated-movies', res.data.rating)
+        this.userRating = res.data.rating
+        this.$emit('rated-movies', this.userRating)
       })
       .catch((err) =>{
         console.log(err)

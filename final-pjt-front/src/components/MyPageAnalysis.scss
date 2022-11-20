@@ -5,20 +5,21 @@
   
   &-desctiption {
     font-family: 'NanumSquareNeo-Variable';
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14pt;
     margin-bottom: 20px;
+    word-break: keep-all;
   }
   &-title {
     font-family: 'NanumSquareNeo-Variable';
     font-weight: 600;
     font-size: 24pt;
     margin-bottom: 10px;
+    word-break: keep-all;
   }
   &-cardbox {
     margin-top: 20px;
     width: 100%;
-    height: 180px;
   }
   &-card {
     display: inline-block;
@@ -29,6 +30,7 @@
     padding: 20px;
     margin: 10px;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.341) 0px 5px 15px;
     
     &-title {
       font-family: 'NanumSquareNeo-Variable';

@@ -88,7 +88,7 @@ class MovieSearchSerializer(serializers.ModelSerializer):
         
         class Meta:
             model = Movie
-            fields = ('pk', 'title', 'poster_path')
+            fields = ('pk', 'title', 'poster_path', 'backdrop_path')
         
 
 # 단일 영화 항목 조회
