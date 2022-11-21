@@ -7,7 +7,7 @@
     <div class="swiper">
       <swiper class="swiper-detail-row" :options="swiperOption">
         <swiper-slide v-for="(actor, index) in actorData" :key="`movie-${index}`">
-          <div @click="goDetail(actor.key)" class="movie-card">
+          <div @click="goDetail(actor)" class="movie-card">
             <span class="movie-card--title">{{ actor.name }}</span>
             <img class="movie-card--thumbnail" :src="`https://image.tmdb.org/t/p/w500${ actor.profile_path }`">
           </div>
@@ -42,9 +42,14 @@
         },
       }
     },
+    methods: {
+      goDetail(actor) {
+        this.$emit('active-actor-modal', actor)
+      }
+    }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import './MovieDetailDirectorSwiper.scss';
 </style>

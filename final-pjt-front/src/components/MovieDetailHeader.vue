@@ -17,7 +17,8 @@
           <div class="movie-genre">
             <a v-for="(genre, index) in movieData.genres" :key="`genre-${index}`" 
               class="movie-genre-tag"
-              :href="`/movie/genre/${genre.id}`">
+              @click="goDetail(genre)"
+              href="#">
               {{ genre.name }}
             </a>
           </div>
@@ -37,11 +38,16 @@ export default {
   name: 'MovieDetailHeader',
   props: {
     movieData: Object,
+  },
+  methods: {
+    goDetail(genre) {
+      this.$emit('active-genre-modal', genre)
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import './MovieDetailHeader.scss';
 </style>
 

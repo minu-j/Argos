@@ -48,8 +48,6 @@
             </li>
             <!-- 임시 회원가입 -->
             <router-link v-if="!isLogin" id="nav-menu" :to="{ name: 'SignUpView' }">SIGNUP</router-link>
-
-           
           </ul>
         </div>
       </div>
@@ -79,6 +77,9 @@ export default {
     isLogin() {
       return this.$store.getters.isLogin
     },
+  },
+  created() {
+    this.$store.dispatch('getBoxoffice')
   }
 }
 </script>

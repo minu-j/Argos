@@ -5,8 +5,8 @@
         <span id="theater-info-title">{{ selectedTheater.place_name }}</span>
         <span id="theater-info-distance">{{ selectedTheater.distance / 1000 }}km</span>
       </div>
-      <a :href="`${selectedTheater.place_url}`" class="theater-discription">{{ selectedTheater.road_address_name }}</a>
-      <a href="tel:" class="theater-discription">{{ selectedTheater.phone }}</a>
+      <a :href="`${selectedTheater.place_url}`" class="theater-discription" target="_blank">{{ selectedTheater.road_address_name }}</a>
+      <a href="tel:" class="theater-discription" target="_blank">{{ selectedTheater.phone }}</a>
     </div>
     <div v-else id="theater-info">
       <div id="notice">
@@ -36,6 +36,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import './TicketTheater.scss';
 </style>

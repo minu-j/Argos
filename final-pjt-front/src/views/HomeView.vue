@@ -2,25 +2,25 @@
   <div>
     <home-boxoffice/>
     <home-search/>
-    <home-movie/>
+    <home-movie-recommend/>
   </div>
 </template>
 
 <script>
-import HomeMovie from '@/components/HomeMovie.vue'
 import HomeBoxoffice from '../components/HomeBoxoffice.vue'
 import HomeSearch from '../components/HomeSearch.vue'
+import HomeMovieRecommend from '../components/HomeMovieRecommend.vue'
 
 export default {
   components: { 
     HomeSearch, 
     HomeBoxoffice,
-    HomeMovie,
+    HomeMovieRecommend,
   },
   name: 'HomeView',
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "./HomeView.scss";
 </style>

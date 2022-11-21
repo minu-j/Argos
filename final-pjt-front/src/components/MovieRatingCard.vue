@@ -1,16 +1,15 @@
 <template>
   <div>
-    <h1>play</h1>
+
   </div>
 </template>
 
 <script>
-export default {
-  name: 'PlayView',
-}
+  export default {
+    name: 'MovieRatingCard',
+  }
 </script>
 
 <style lang="scss" scoped>
-@import "@/views/PlayView.scss";
-
+  @import './MovieRatingCard.scss';
 </style>

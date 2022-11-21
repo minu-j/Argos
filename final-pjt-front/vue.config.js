@@ -9,12 +9,12 @@ module.exports = defineConfig({
         "changeOrigin":true,
         "secure":false
       },
-      // '/boxoffice': {
-      //   "target":'https://www.kobis.or.kr/kobisopenapi/webservice/rest',
-      //   "pathRewrite":{'^/':''},
-      //   "changeOrigin":true,
-      //   "secure":false
-      // }
+      '/entertainment': {
+        "target":'https://www.yna.co.kr/',
+        "pathRewrite":{'^/':''},
+        "changeOrigin":true,
+        "secure":false
+      },
     }
   }
 })

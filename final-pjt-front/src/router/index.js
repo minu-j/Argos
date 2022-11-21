@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HomeView from '@/views/HomeView'
-import MovieDetail from '@/components/MovieDetail'
 import TicketView from '@/views/TicketView'
 import PlayView from '@/views/PlayView'
 import NewsView from '@/views/NewsView'
@@ -9,6 +8,8 @@ import LoginView from '@/views/LoginView'
 import SignUpView from '@/views/SignUpView'
 import MyPageView from '@/views/MyPageView'
 import NotFound404 from '@/views/NotFound404'
+import MovieRating from '@/components/MovieRating'
+import MovieDetail from '@/components/MovieDetail'
 
 
 Vue.use(Router)
@@ -69,6 +70,14 @@ export const constantRoutes = [
     component: MyPageView,
     meta: {
       title: 'ARGOS 마이페이지'
+    }
+  },
+  {
+    path: '/rating',
+    name: 'MovieRating',
+    component: MovieRating,
+    meta: {
+      title: 'ARGOS'
     }
   },
   {

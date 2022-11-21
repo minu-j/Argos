@@ -1,0 +1,56 @@
+.analysis {
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  
+  &-desctiption {
+    font-family: 'NanumSquareNeo-Variable';
+    font-weight: 500;
+    font-size: 14pt;
+    margin-bottom: 20px;
+    word-break: keep-all;
+  }
+  &-title {
+    font-family: 'NanumSquareNeo-Variable';
+    font-weight: 600;
+    font-size: 24pt;
+    margin-bottom: 10px;
+    word-break: keep-all;
+  }
+  &-cardbox {
+    margin-top: 20px;
+    width: 100%;
+  }
+  &-card {
+    display: inline-block;
+    width: 30%;
+    min-width: 250px;
+    height: 200px;
+    background-color: rgb(45, 45, 45);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.341) 0px 5px 15px;
+    
+    &-title {
+      font-family: 'NanumSquareNeo-Variable';
+      font-weight: 600;
+      font-size: 18pt;
+      margin-bottom: 10px;
+    }
+    &-content {
+      margin-top: 5px;
+      
+      &-name {
+        font-weight: 600;
+        font-size: 12pt;
+      }
+      &-ratio {
+        font-weight: 400;
+        color: gray;
+        font-size: 12pt;
+        margin-left: 10px;
+      }
+    }
+  }
+}
