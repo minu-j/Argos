@@ -1,12 +1,27 @@
 #review {
+  background-color: rgba(45, 45, 45, 0.977);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: 40px;
 
-  &-container {
+  &-title {
     text-align: center;
+    font-size: 24px;
+    margin-top: 50px;
+    margin-bottom: 20px;
   }
+
   &-textarea {
-    font-size: 16pt;
+    height: 115px;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(45, 45, 45, 0);
+    font-size: 1rem;
     color: white;
-    background-color: rgba(250, 235, 215, 0);
     border: none;
     resize: none;
     outline: none;
@@ -23,5 +38,136 @@
     &::-webkit-scrollbar-track {
       background-color: rgb(48, 48, 48); /*스크롤바 트랙 색상*/
     }
+  }
+
+  &-button {
+    color: white;
+    margin-bottom: 30px;
+  }
+}
+
+.review {
+  cursor: pointer;
+
+  transition: all 0.2s ease-out;
+  &:hover { // 마우스오버시 크기 키우기
+    transform: scale(1.02);
+  }
+
+
+  &-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(45, 45, 45, 0.977);
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+    padding: 20px 10px 10px 10px;
+    margin-bottom: 20px;
+  }
+
+  &-gold {
+    font-size: 16pt;
+    color: #ffed75;
+  }
+
+  &-silver {
+    font-size: 16pt;
+    color: #eee;
+  }
+
+  &-content {
+    text-align: center;
+    margin-top: 20px;
+    width: 200px;
+    min-height: 60px;
+    line-height: 20px;
+
+    &-small {
+      text-align: center;
+      margin-top: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient:vertical;
+      width: 200px;
+      height: 60px;
+      line-height: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+  }
+
+  &-create {
+    margin-block: 10px 10px;
+    font-size: 10pt;
+    color: gray;
+  }
+
+  &-username {
+    font-size: 10pt;
+    margin-top: 30px;
+    padding: 0px 10px;
+    border-radius: 20px;
+    background-color: rgb(73, 73, 73);
+    box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+    cursor: pointer;
+
+    background-color: #4a4a4a;
+    border-radius: 20px;
+
+    &:hover {
+      outline: 3px white solid;
+      color: white;
+    }
+  }
+}
+
+.comment {
+
+  &-my {
+    text-align: right;
+  }
+
+  &-content {
+    padding: 5px 12px 5px 12px;
+    font-size: 12pt;
+    background-color: rgb(57, 57, 57);
+    border-radius: 15px;
+
+    &-my {
+      padding: 5px 12px 5px 12px;
+      font-size: 12pt;
+      margin-top: 10px;
+      background-color: rgb(69, 115, 167);
+      border-radius: 15px;
+      text-align: right;
+    }
+  }
+  
+  &-create {
+    margin-block: 5px 12px;
+    margin-inline: 10px;
+    font-size: 10pt;
+    color: gray;
+    
+    &-my {
+      margin-block: 5px 12px;
+      margin-inline: 10px;
+      font-size: 10pt;
+      color: gray;
+      text-align: right;
+    }
+  }
+
+  &-input {
+    padding: 5px 12px 5px 12px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 15px;
+    background-color: rgb(57, 57, 57);
+    border: none;
+    color: white;
+    outline: none;
   }
 }

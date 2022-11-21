@@ -28,6 +28,9 @@ export default {
     ratedMovies(ratedMovieData) {
       this.ratedMovieData = ratedMovieData
     },
+  },
+  mounted() {
+    console.log(window.location.pathname.replaceAll('/mypage/', ''))
   }
 }
 

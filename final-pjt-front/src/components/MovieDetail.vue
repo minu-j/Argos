@@ -10,10 +10,13 @@
           <div>
             <span
               class="movie-provider-logo"
+              @click="goProvider(provider)"
               v-for="(provider, index) in movieData.providers" :key="`provider-${index}`"
               >
-              <img class="movie-provider-logo-img" :src="`https://image.tmdb.org/t/p/original${provider.logo_path}`" alt="">
-              {{ provider.name }}
+              <div>
+                <img class="movie-provider-logo-img" :src="`https://image.tmdb.org/t/p/original${provider.logo_path}`" alt="">
+                {{ provider.name }}
+              </div>
             </span>
           </div>
         </div>
@@ -28,7 +31,7 @@
       <movie-detail-actor-swiper @active-actor-modal="getActorDetail" id="detail-profile-swiper" :actor-data="movieData.actors"/>
 
       <!-- 리뷰 -->
-      <movie-detail-review :user-score="scoreData" :movie-data="movieData"/>
+      <movie-detail-review @reload-movie-data="getMovieData" :user-score="scoreData" :movie-data="movieData"/>
     </div>
     <!-- 배경이미지 -->
     <div id="backdrop">
@@ -102,32 +105,59 @@ export default {
         .catch((err) =>{
           console.log(err)
         })
-
     },
     userScore(score) {
       console.log(score)
       this.scoreData = score
+    },
+    getMovieData() {
+      const movie_id = window.location.pathname.replaceAll('/movie/', '')
+      const API_URL = 'http://127.0.0.1:8000'
+      const Token = this.$store.state.token
+      console.log(`Token ${Token}`)
+      axios({
+        method: 'GET',
+        url: `${API_URL}/api/v1/movie/${movie_id}/`,
+        headers: {
+          Authorization: `Token ${Token}`
+        }
+      })
+        .then((res) =>{
+          console.log(res.data)
+          this.movieData = res.data
+        })
+        .catch((err) =>{
+          console.log(err)
+          this.$router.push({ name: 'NotFound404' })
+        })
+    },
+    // 대표적인 provider url 연결
+    goProvider(provider) {
+      console.log(provider)
+      if (provider.name === 'Netflix') {
+        window.open('https://www.netflix.com/kr/')
+
+      } else if (provider.name === 'Watcha') {
+        window.open('https://watcha.com/')
+      
+      } else if (provider.name === 'Amazon Prime Video') {
+        window.open('https://www.primevideo.com/')
+
+      } else if (provider.name === 'Disney Plus') {
+        window.open('https://www.disneyplus.com/ko-kr/')
+
+      } else if (provider.name === 'Apple TV Plus') {
+        window.open('https://tv.apple.com/kr/')
+
+      } else if (provider.name === 'wavve') {
+        window.open('https://www.wavve.com/')
+      
+      }
+
     }
   },
   mounted() {
-    const movie_id = this.$route.query.movie_id
-    const API_URL = 'http://127.0.0.1:8000'
-    const Token = this.$store.state.token
-    console.log(`Token ${Token}`)
-    axios({
-      method: 'GET',
-      url: `${API_URL}/api/v1/movie/${movie_id}/`,
-      headers: {
-        Authorization: `Token ${Token}`
-      }
-    })
-      .then((res) =>{
-        console.log(res.data)
-        this.movieData = res.data
-      })
-      .catch((err) =>{
-        console.log(err)
-      })
+    this.getMovieData()
   }
 }
 </script>

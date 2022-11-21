@@ -5,7 +5,7 @@
       <div class="movie row">
         <div class="col-10 col-md-4">
           <div>
-            <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w1280${movieData.poster_path}`" alt="">
+            <img @click="openPoster(movieData.poster_path)" class="movie-poster" :src="`https://image.tmdb.org/t/p/w1280${movieData.poster_path}`" alt="">
           </div>
         </div>
         <!-- 영화 설명 컬럼 -->
@@ -51,6 +51,9 @@ export default {
     userScore(score) {
       this.scoreData = score
       this.$emit('user-score', score)
+    },
+    openPoster(link) {
+      window.open(`https://image.tmdb.org/t/p/w1280${link}`)
     }
   }
 }

@@ -34,7 +34,7 @@ export default {
     },
     goDetail(id) {
       this.$emit('close-modal')
-      this.$router.push({ name: 'MovieDetail', params: { movie_id: id }, query: {movie_id: id}})
+      this.$router.push(`/movie/${id}`)
       this.$router.go(this.$router.currentRoute)
     }
   },

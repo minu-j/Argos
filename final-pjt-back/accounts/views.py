@@ -171,7 +171,9 @@ def get_user_recommend(request, user_pk):
 
 # 유저가 준 모든 평점의 영화 리스트를 기반으로 취향을 계산하여 반환
 @api_view(['GET'])
-def get_user_analysis(request, user_pk):
+def get_user_analysis(request, username):
+    user = get_object_or_404(User, username=username)
+    user_pk = user.id
     ratings = get_list_or_404(Rating, user_id=user_pk)
     serializer = RatingListSerializers(ratings, many=True)
 

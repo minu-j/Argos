@@ -100,6 +100,8 @@ export default {
       })
         .then(res => {
           console.log('별점 삭제', res)
+          this.scoreData = null
+          this.$emit('user-score', this.scoreData)
         })
         .catch(err => {
           console.log('별점이 삭제되지 않았습니다.', err)

@@ -102,6 +102,18 @@ class MovieSerializer(serializers.ModelSerializer):
     
     # 영화 가져올때 해당 영화의 리뷰도 함께 가져오기
     class ReviewListSerializer(serializers.ModelSerializer):
+
+        class CommentListSerializer(serializers.ModelSerializer):
+
+            user = UserSerializer()
+        
+            class Meta:
+                model = Comment
+                fields = '__all__'
+        
+        comment_set = CommentListSerializer(many=True, read_only=True)
+
+        user = UserSerializer()
         
         class Meta:
             model = Review

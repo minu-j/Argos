@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="rating">
-      <div class="rating-title">내가 평가한 영화</div>
+      <div class="rating-title">{{ratedMovieData[5].length + ratedMovieData[4].length + ratedMovieData[3].length + ratedMovieData[2].length + ratedMovieData[1].length }}개의 영화를 평가했어요</div>
       <div v-if="ratedMovieData[5].length > 0" class="rating-row">
         <span class="rating-rating">
           <span class="rating-rating-goldstar">★★★★★</span>

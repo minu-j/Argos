@@ -36,7 +36,7 @@
               <div class="nav-item--select">
                 <div class="nav-item--select-bg"></div>
               </div>
-              <router-link to="/mypage">MYPAGE</router-link>
+              <a @click="myPage" to="/mypage">MYPAGE</a>
             </li>
             <li v-if="isLogin" class="nav-item nav-item--rightside">
               <div class="nav-item--select">
@@ -86,6 +86,11 @@ export default {
     // },
     reLoad() {
       this.$router.push({ name:'HomeView' })
+      this.$router.go(this.$router.currentRoute)
+    },
+    myPage() {
+      const username = this.$store.state.username
+      this.$router.push(`/mypage/${username}`)
       this.$router.go(this.$router.currentRoute)
     }
   },

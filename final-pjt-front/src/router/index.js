@@ -16,7 +16,7 @@ Vue.use(Router)
 
 export const constantRoutes = [
   {
-    path: '/',
+    path: '/home',
     name: 'HomeView',
     component: HomeView,
     meta: {
@@ -65,7 +65,7 @@ export const constantRoutes = [
   },
   {
     // path: '/mypage/:username',
-    path: '/mypage',
+    path: '/mypage/:username',
     name: 'MyPageView',
     component: MyPageView,
     meta: {
@@ -81,7 +81,7 @@ export const constantRoutes = [
     }
   },
   {
-    path: '/:movie_id',
+    path: '/movie/:movie_id',
     name: 'MovieDetail',
     component: MovieDetail,
     meta: {
