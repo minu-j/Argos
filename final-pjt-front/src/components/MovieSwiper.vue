@@ -42,7 +42,7 @@
       }
     },
     props: {
-      recommendMovies: Array
+      recommendMovies: Object
     },
     methods: {
       goDetail(id) {

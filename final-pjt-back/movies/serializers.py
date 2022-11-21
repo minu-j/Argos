@@ -83,12 +83,12 @@ class MovieListSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 
-# 전체 영화 pk, 제목만 조회
+# 전체 영화 id, 제목, 포스터 주소만 조회
 class MovieSearchSerializer(serializers.ModelSerializer):
         
         class Meta:
             model = Movie
-            fields = ('pk', 'title', 'poster_path', 'backdrop_path')
+            fields = ('pk', 'id', 'title', 'poster_path', 'backdrop_path')
         
 
 # 단일 영화 항목 조회

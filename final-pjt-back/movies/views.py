@@ -1,3 +1,5 @@
+import random
+
 from django.db.models import Count
 from django.shortcuts import get_object_or_404, get_list_or_404
 
@@ -8,7 +10,7 @@ from rest_framework.decorators import api_view
 from .models import *
 from .serializers import *
 
-from django.shortcuts import render
+from django.http import JsonResponse
 
 User = get_user_model()
 
@@ -27,6 +29,21 @@ def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializer = MovieSerializer(movie)
     return Response(serializer.data)
+
+# 평가용 랜덤 영화 불러오기
+@api_view(['GET'])
+def get_movie_random(request):
+    movie = get_list_or_404(Movie)
+    serializer = MovieSearchSerializer(movie, many=True)
+    response_data = []
+    
+    num_range = list(range(0, len(serializer.data)))
+    
+    # 랜덤으로 표시하도록 데이터 섞기
+    for i in random.sample(num_range, 24):
+        response_data.append(serializer.data[i])
+
+    return JsonResponse({ 'data': response_data })
 
 
 ########################### 장르 ######################################

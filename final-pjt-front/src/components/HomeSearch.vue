@@ -44,12 +44,6 @@ export default {
       searchInputData: null,  // 검색 데이터
     }
   },
-  watch: {
-    // 글자 외 다른 키 입력시에도 자동검색이 돌아가지 않게 watch에서 값이 변할때만 실행
-    searchInputData: function () {
-      console.log(this.searchInputData)
-    }
-  },
   methods: {
     // 모달 배경을 누르거나, 서치 인풋태그를 누르면 모달 켜지거나 꺼지게 하는 함수
     modalActiveTogle() {

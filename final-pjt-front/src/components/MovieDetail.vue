@@ -2,7 +2,7 @@
   <div id="movie-detail-page">
     <movie-detail-modal @close-modal="activeModalTogle" :modal-data="modalData" v-if="activeModal" id="movie-detail-modal"/>
     <div id="movie-detail">
-      <movie-detail-header @active-genre-modal="getGenreDetail" :movie-data="movieData"/>
+      <movie-detail-header @user-score="userScore" @active-genre-modal="getGenreDetail" :movie-data="movieData"/>
       <!-- 스트리밍 서비스 이용 가능시 렌더 -->
       <div v-if="movieData.providers.length > 0">
         <div class="movie-provider">
@@ -27,7 +27,8 @@
       <movie-detail-director-swiper @active-director-modal="getDirectorDetail" id="detail-profile-swiper" :director-data="movieData.directors"/>
       <movie-detail-actor-swiper @active-actor-modal="getActorDetail" id="detail-profile-swiper" :actor-data="movieData.actors"/>
 
-      <div class="row">review comment 자리</div>
+      <!-- 리뷰 -->
+      <movie-detail-review :user-score="scoreData" :movie-data="movieData"/>
     </div>
     <!-- 배경이미지 -->
     <div id="backdrop">
@@ -46,9 +47,10 @@ import MovieDetailHeader from './MovieDetailHeader.vue'
 import MovieDetailDirectorSwiper from './MovieDetailDirectorSwiper.vue'
 import MovieDetailActorSwiper from './MovieDetailActorSwiper.vue'
 import MovieDetailModal from './MovieDetailModal.vue'
+import MovieDetailReview from './MovieDetailReview.vue'
 
 export default {
-  components: { MovieDetailVideoSwiper, MovieDetailHeader, MovieDetailDirectorSwiper, MovieDetailActorSwiper, MovieDetailModal },
+  components: { MovieDetailVideoSwiper, MovieDetailHeader, MovieDetailDirectorSwiper, MovieDetailActorSwiper, MovieDetailModal, MovieDetailReview },
   name: 'MovieDetail',
   data() {
     return {
@@ -57,7 +59,8 @@ export default {
         category: null,
         data: {}
       },
-      activeModal: false
+      activeModal: false,
+      scoreData: null
     }
   },
   methods: {
@@ -101,6 +104,10 @@ export default {
         })
 
     },
+    userScore(score) {
+      console.log(score)
+      this.scoreData = score
+    }
   },
   mounted() {
     const movie_id = this.$route.query.movie_id

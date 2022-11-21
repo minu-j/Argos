@@ -75,8 +75,8 @@ class Rating(models.Model): # 별점용 중계 테이블
 
     
 class Review(models.Model): # 리뷰
-    title = models.CharField(max_length=100)
     content = models.TextField()
+    score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True) 
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)

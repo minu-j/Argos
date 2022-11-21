@@ -23,7 +23,7 @@
             </a>
           </div>
           <!-- 별점 컨테이너 -->
-          <star-rating :movie-data="movieData"/>
+          <star-rating @user-score="userScore" :movie-data="movieData"/>
         </div>
       </div>
     </div>
@@ -39,9 +39,18 @@ export default {
   props: {
     movieData: Object,
   },
+  data() {
+    return {
+      scoreData: null,
+    }
+  },
   methods: {
     goDetail(genre) {
       this.$emit('active-genre-modal', genre)
+    },
+    userScore(score) {
+      this.scoreData = score
+      this.$emit('user-score', score)
     }
   }
 }

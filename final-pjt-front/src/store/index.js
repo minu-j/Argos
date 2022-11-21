@@ -71,23 +71,19 @@ export default new Vuex.Store({
     },
     
     // 회원 가입 && 로그인 && 로그아웃을 위한 토큰 저장, 변경
-    SAVE_TOKEN(state, token) {
-      state.token = token.key
-      state.username = token.username
-      router.push({ name:'LoginView' })
-
-      //////////////////////////// 여기서 영화선택 페이지로 넘어가게
-
+    SAVE_TOKEN(state, payload) {
+      state.token = payload.token
     },
-    
-    SAVE_USER_ID(state, id) {
-      state.userId = id
-      console.log(id)
-      router.push({name: 'HomeView'})
+
+    SAVE_USER_DATA(state, payload) {
+      state.userId = payload.userId
+      state.username = payload.username
     },
     
     NULL_TOKEN(state) {
       state.token = null
+      state.username = null
+      state.userId = null
       router.push({name: 'HomeView'})
     },
 
@@ -139,13 +135,47 @@ export default new Vuex.Store({
         }
       })
         .then(res => {
-          context.commit('SAVE_TOKEN', res.data.key)
+          const payload = {
+            token: res.data.key,
+            isFirst: true
+          }
+          context.commit('SAVE_TOKEN', payload)
+
+          axios({
+            method: 'get',
+            url: `${API_URL}/accounts/user/`,
+            headers: {
+              Authorization: `Token ${payload.token}`
+            }
+          })
+            .then(res => {
+              const payload = {
+                userId: res.data.pk,
+                username: res.data.username
+              }
+              console.log(payload)
+              context.commit('SAVE_USER_DATA', payload)
+              })
+            .then(() =>{
+              if (payload.isFirst) {
+                // 회원가입 후 영화 평가 페이지로 이동
+                router.push({ name:'MovieRating' })
+                // 로그인 후 홈으로 이동
+              } else {
+                router.push({ name:'HomeView' })
+              }
+            })
+            .catch(err => {
+              console.log(err)
+            })
+
         })
         .catch(err => console.log(err))
     },
     logIn(context, payload) {
       const username = payload.username
       const password = payload.password
+
       axios({
         method: 'post',
         url: `${API_URL}/accounts/login/`,
@@ -154,14 +184,40 @@ export default new Vuex.Store({
         }
       })
         .then(res => {
-          context.commit('SAVE_TOKEN', {'key': res.data.key, 'username': username})
+          const payload = {
+            token: res.data.key,
+            isFirst: false
+          }
+          context.commit('SAVE_TOKEN', payload)
+
           axios({
             method: 'get',
-            url: `${API_URL}/accounts/userinfo/${username}/`
+            url: `${API_URL}/accounts/user/`,
+            headers: {
+              Authorization: `Token ${payload.token}`
+            }
           })
             .then(res => {
-              context.commit('SAVE_USER_ID', res.data.id)
+              const payload = {
+                userId: res.data.pk,
+                username: res.data.username
+              }
+              console.log(payload)
+              context.commit('SAVE_USER_DATA', payload)
+              })
+            .then(() =>{
+              if (payload.isFirst) {
+                // 회원가입 후 영화 평가 페이지로 이동
+                router.push({ name:'MovieRating' })
+                // 로그인 후 홈으로 이동
+              } else {
+                router.push({ name:'HomeView' })
+              }
             })
+            .catch(err => {
+              console.log(err)
+            })
+
         })
         .catch(err => console.log(err))
     },

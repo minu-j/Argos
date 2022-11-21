@@ -1,9 +1,9 @@
 <template>
   <div>
     <div id="modal">
+      <img id="detail-modal-close" @click="closeModal" src="@/assets/CloseIcon.png">
       <div id="detail-modal">
         <div class="container text-center" id="detail-modal-container">
-          <img id="detail-modal-close" @click="closeModal" src="@/assets/CloseIcon.png">
           <!-- 감독용 제목 -->
           <div v-if="modalData.category === 'genre'" id="detail-modal-title">{{modalData.data.name}} 장르의 영화 {{ modalData.movie_set.movie_set.length }}편</div>
           <div v-if="modalData.category === 'director'" id="detail-modal-title">{{modalData.data.name}} 감독의 영화 {{ modalData.movie_set.movie_set.length }}편</div>

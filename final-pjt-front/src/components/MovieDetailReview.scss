@@ -1,0 +1,27 @@
+#review {
+
+  &-container {
+    text-align: center;
+  }
+  &-textarea {
+    font-size: 16pt;
+    color: white;
+    background-color: rgba(250, 235, 215, 0);
+    border: none;
+    resize: none;
+    outline: none;
+
+    &::-webkit-scrollbar {
+      width: 5px; /*스크롤바의 너비*/
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(80, 80, 80); /*스크롤바의 색상*/
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgb(48, 48, 48); /*스크롤바 트랙 색상*/
+    }
+  }
+}
