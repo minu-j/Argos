@@ -9,6 +9,20 @@ import cheerio from 'cheerio'
 
 Vue.use(Vuex)
 
+// const requireAuth = () => (from, to, next) => {
+//   const JSONtoken = JSON.parse(localStorage.getItem('vuex'))
+//   const token = JSONtoken.token
+//   // 로그인 되어있으면 next로 이동
+//   if (token) {
+//     return next()
+//   }else{ // 로그인 안 되어있으면 로그인 페이지로 이동
+//   alert('로그인이 필요한 서비스입니다.')
+//   next('/login')
+//   // 어디로 갈 지 담겨있음
+//   // next('from.fullPath')}
+//  }
+// }
+
 const API_URL = 'http://127.0.0.1:8000'
 
 export default new Vuex.Store({
@@ -60,14 +74,18 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token.key
       state.username = token.username
+      router.push({ name:'LoginView' })
+
       //////////////////////////// 여기서 영화선택 페이지로 넘어가게
-      
+
     },
+    
     SAVE_USER_ID(state, id) {
       state.userId = id
       console.log(id)
       router.push({name: 'HomeView'})
     },
+    
     NULL_TOKEN(state) {
       state.token = null
       router.push({name: 'HomeView'})
@@ -77,6 +95,7 @@ export default new Vuex.Store({
   //     state.token = remove.state.token
   //     router.push({name: 'HomeView'})
   // },
+  
   ////////////////// 박스오피스 /////////////////////
     GET_TODAY(state, payload) {
       console.log()
@@ -104,7 +123,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+
     ////////////////// 인증 관련 ///////////////////
+
     signUp(context, payload) {
       const username = payload.username
       const password1 = payload.password1

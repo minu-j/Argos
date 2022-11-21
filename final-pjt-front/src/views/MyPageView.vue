@@ -10,6 +10,7 @@
 <script>
 import MyPageAnalysis from '../components/MyPageAnalysis.vue'
 import MyPageRating from '../components/MyPageRating.vue'
+
 export default {
   components: { MyPageAnalysis, MyPageRating },
   name: 'MyPageView',
@@ -29,6 +30,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

@@ -8,6 +8,9 @@ from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404, get_list_or_404
 from collections import defaultdict
 
+# from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+
+
 from .serializers import *
 from movies.serializers import *
 
@@ -236,3 +239,40 @@ def get_user_analysis(request, user_pk):
     response_data['like_director'] = new_director_list
 
     return JsonResponse(response_data)
+
+
+#########################################################################
+
+# 회원 탈퇴
+@api_view(['POST'])
+def delete(request):
+    if request.user.is_authenticated:
+        request.user.delete()
+    return Response(request)
+
+
+# 팔로우
+@api_view(['POST'])
+# @authentication_classes([JSONWebTokenAuthentication]) 사용법 모르겠움
+@permission_classes([IsAuthenticated])
+def follow(request, username):
+
+    person = get_object_or_404(get_user_model(), username=username)
+    user = request.user
+    # 자기 자신은 팔로우 할 수 없기 때문에
+    if person != user:
+        # 내가 (request.user) 그 사람의 팔로워 목록에 있다면
+        if person.followers.filter(pk=user.pk).exists():
+            # 언팔로우
+            person.followers.remove(user)
+            follow = True
+        else:
+            # 팔로우
+            person.followers.add(user)
+            follow = False
+        follow_status ={
+            'follow':follow,
+            'count':person.followers.count(),
+        }
+        return JsonResponse(follow_status)
+    # return redirect('accounts:profile', person.username)
