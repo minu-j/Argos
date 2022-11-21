@@ -63,6 +63,7 @@ export const constantRoutes = [
     }
   },
   {
+    // path: '/mypage/:username',
     path: '/mypage',
     name: 'MyPageView',
     component: MyPageView,
