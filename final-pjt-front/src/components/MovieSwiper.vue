@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div id="gradient-left"></div>
+    <div id="gradient-right"></div>
     <div id="movie-swiper-title">
       <div id="movie-swiper-title-box">
         <div id="movie-swiper-title-box--item">{{ recommendMovies.prefix }} "{{ recommendMovies.name }}" {{ recommendMovies.category }}의 영화</div>

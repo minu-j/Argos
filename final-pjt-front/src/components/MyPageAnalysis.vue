@@ -16,23 +16,31 @@
           :wordClick="wordClickHandler">
         </wordcloud>
       </div>
-      <div class="analysis-cardbox">
-        <div class="analysis-card">
-          <div class="analysis-card-title">배우</div>
-          <div v-for="(actor, index) in likeActor" :key="`actor-${index}`" class="analysis-card-content">
-            <span class="analysis-card-content-name">{{ actor['0'] }}</span><span class="analysis-card-content-ratio">{{ actor['1'] }}%</span>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="analysis-card">
+              <div class="analysis-card-title">배우</div>
+              <div v-for="(actor, index) in likeActor" :key="`actor-${index}`" class="analysis-card-content">
+                <span class="analysis-card-content-name">{{ actor['0'] }}</span><span class="analysis-card-content-ratio">{{ actor['1'] }}%</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="analysis-card">
-          <div class="analysis-card-title">감독</div>
-          <div v-for="(director, index) in likeDirector" :key="`director-${index}`" class="analysis-card-content">
-            <span class="analysis-card-content-name">{{ director['0'] }}</span><span class="analysis-card-content-ratio">{{ director['1'] }}%</span>
+          <div class="col-12 col-md-4">
+            <div class="analysis-card">
+              <div class="analysis-card-title">감독</div>
+              <div v-for="(director, index) in likeDirector" :key="`director-${index}`" class="analysis-card-content">
+                <span class="analysis-card-content-name">{{ director['0'] }}</span><span class="analysis-card-content-ratio">{{ director['1'] }}%</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="analysis-card">
-          <div class="analysis-card-title">장르</div>
-          <div v-for="(genre, index) in likeGenre" :key="`genre-${index}`" class="analysis-card-content">
-            <span class="analysis-card-content-name">{{ genre['0'] }}</span><span class="analysis-card-content-ratio">{{ genre['1'] }}%</span>
+          <div class="col-12 col-md-4">
+            <div class="analysis-card">
+              <div class="analysis-card-title">장르</div>
+              <div v-for="(genre, index) in likeGenre" :key="`genre-${index}`" class="analysis-card-content">
+                <span class="analysis-card-content-name">{{ genre['0'] }}</span><span class="analysis-card-content-ratio">{{ genre['1'] }}%</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -91,6 +99,7 @@ export default {
       }
     })
       .then((res) =>{
+        console.log(res)
         this.likeActor = res.data.like_actor
         this.likeDirector = res.data.like_director
         this.likeGenre = res.data.like_genre

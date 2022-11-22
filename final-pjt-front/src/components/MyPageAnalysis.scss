@@ -17,18 +17,12 @@
     margin-bottom: 10px;
     word-break: keep-all;
   }
-  &-cardbox {
-    margin-top: 20px;
-    width: 100%;
-  }
+
   &-card {
-    display: inline-block;
-    width: 30%;
-    min-width: 250px;
+    margin-top: 20px;
     height: 200px;
     background-color: rgb(45, 45, 45);
-    padding: 20px;
-    margin: 10px;
+    padding: 20px 10px 0px 10px;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.341) 0px 5px 15px;
     
