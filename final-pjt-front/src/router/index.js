@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import StartView from '@/views/StartView'
 import HomeView from '@/views/HomeView'
 import TicketView from '@/views/TicketView'
 import PlayView from '@/views/PlayView'
@@ -15,6 +16,14 @@ import MovieDetail from '@/components/MovieDetail'
 Vue.use(Router)
 
 export const constantRoutes = [
+  {
+    path: '/',
+    name: 'StartView',
+    component: StartView,
+    meta: {
+      title: 'ARGOS'
+    }
+  },
   {
     path: '/home',
     name: 'HomeView',

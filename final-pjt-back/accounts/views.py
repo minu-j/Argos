@@ -16,7 +16,7 @@ from movies.serializers import *
 
 User = get_user_model()
 
- # 로그인시 유저 정보 조회
+# 로그인시 유저 정보 조회
 @api_view(['GET'])
 def get_user_info(request, username):
     user = get_object_or_404(User, username=username)
@@ -258,27 +258,67 @@ def delete(request):
 
 
 # 팔로우
-@api_view(['POST'])
-# @authentication_classes([JSONWebTokenAuthentication]) 사용법 모르겠움
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def follow(request, username):
 
-    person = get_object_or_404(get_user_model(), username=username)
-    user = request.user
-    # 자기 자신은 팔로우 할 수 없기 때문에
-    if person != user:
-        # 내가 (request.user) 그 사람의 팔로워 목록에 있다면
-        if person.followers.filter(pk=user.pk).exists():
-            # 언팔로우
-            person.followers.remove(user)
-            follow = True
-        else:
-            # 팔로우
-            person.followers.add(user)
-            follow = False
-        follow_status ={
-            'follow':follow,
-            'count':person.followers.count(),
-        }
-        return JsonResponse(follow_status)
-    # return redirect('accounts:profile', person.username)
+    # 내가 팔로잉한 사람인지 확인
+    if request.method == 'GET':
+        person = get_object_or_404(get_user_model(), username=username)
+        user = request.user
+        
+        if person != user:
+            isFollow = False
+            # 내가 (request.user) 그 사람의 팔로워 목록에 있다면
+            if person.followers.filter(pk=user.pk).exists():
+                isFollow = True
+            return JsonResponse({'isFollow': isFollow})
+    
+    elif request.method == 'POST':
+        person = get_object_or_404(get_user_model(), username=username)
+        user = request.user
+        # 자기 자신은 팔로우 할 수 없기 때문에
+        if person != user:
+            # 내가 (request.user) 그 사람의 팔로워 목록에 있다면
+            if person.followers.filter(pk=user.pk).exists():
+                # 언팔로우
+                person.followers.remove(user)
+                follow = True
+            else:
+                # 팔로우
+                person.followers.add(user)
+                follow = False
+            follow_status ={
+                'follow':follow,
+            }
+            return JsonResponse(follow_status)
+        
+
+# 팔로우 데이터 가져오기
+@api_view(['GET'])
+def get_user_follow(request, username):
+    user = get_list_or_404(User, username=username)
+    serializer = UserFollowListSerializers(user, many=True)
+    return Response(serializer.data)
+    
+############################ 유저가 작성한 리뷰, 코멘트 조회 #############################
+
+@api_view(['GET'])
+def get_user_review(request, username):
+    user = get_object_or_404(User, username=username)
+    serializer = UserInfoSerializers(user)
+    user_id = serializer.data['id']
+    
+    review = get_list_or_404(Review, user_id=user_id)
+    serializer = UserReviewSerializers(review, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def get_user_comment(request, username):
+    user = get_object_or_404(User, username=username)
+    serializer = UserInfoSerializers(user)
+    user_id = serializer.data['id']
+    
+    comment = get_list_or_404(Comment, user_id=user_id)
+    serializer = UserCommentSerializers(comment, many=True)
+    return Response(serializer.data)

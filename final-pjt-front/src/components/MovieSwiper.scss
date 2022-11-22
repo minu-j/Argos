@@ -74,3 +74,23 @@
     }
   }
 }
+
+#gradient {
+
+  &-left {
+  z-index: 99;
+  position: absolute;
+  left: 0px;
+  width: 10vw;
+  height: 300px;
+  background: linear-gradient(to right, #222222e1, rgba(255, 255, 255, 0))
+  }
+  &-right {
+  z-index: 99;
+  position: absolute;
+  right: 0px;
+  width: 10vw;
+  height: 300px;
+  background: linear-gradient(to left, #222222e1, rgba(255, 255, 255, 0))
+  }
+}

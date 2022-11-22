@@ -11,23 +11,31 @@
             class="col-6 col-sm-4 col-md-3 col-xl-2">
             <movie-rating-card :random-movie="movie"/>
           </div>
-          <div id="get-next-row"></div>
         </div>
+        <div class="row" id="get-next-row">
+            <div 
+              v-for="loader in 24"
+              :key="`loader-${loader}`"
+              class="col-6 col-sm-4 col-md-3 col-xl-2">
+              <movie-loader-card/>
+            </div>
+          </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import MovieRatingCard from './MovieRatingCard.vue'
 import axios from 'axios'
+import MovieRatingCard from './MovieRatingCard.vue'
+import MovieLoaderCard from './MovieLoaderCard.vue'
 
   export default {
-  components: { MovieRatingCard },
+  components: { MovieRatingCard, MovieLoaderCard },
     name: 'MovieRating',
     data() {
       return {
-        randomMovie: []
+        randomMovie: [],
       }
     },
     methods: {
@@ -42,6 +50,7 @@ import axios from 'axios'
           }
         })
           .then((res) =>{
+            console.log('영화 로드됨', res.data)
             res.data.data.forEach(element => {
               this.randomMovie.push(element)
             });
@@ -66,31 +75,35 @@ import axios from 'axios'
       })
         .then((res) =>{
           this.randomMovie = res.data.data
+
+          // 로더 띄우기 용 감시 옵저버
+          const target = document.querySelector('#get-next-row').firstChild
+          console.log(target)
+
+          const showLastMovie = (entries) => {
+
+            // Destructuring
+            const [{isIntersecting}] = entries;
+            
+            if (isIntersecting) {
+              console.log('!!!', isIntersecting)
+              this.getNextMovie()
+            }
+          };
+
+          // intersection observer 생성자 초기화 (관찰자)
+          const io = new IntersectionObserver(showLastMovie, {
+            root: null,
+            threshold: 0.5,
+          })
+
+          // NodeList의 각 요소들 감시 시작
+          io.observe(target);
+
         })
         .catch((err) =>{
           console.log(err)
         })
-
-      const target = document.querySelector('#get-next-row')
-
-      const showLastMovie = (entries) => {
-
-        // Destructuring
-        const [{isIntersecting}] = entries;
-        
-        if (isIntersecting) {
-          this.getNextMovie()
-        }
-      };
-
-      // intersection observer 생성자 초기화 (관찰자)
-      const io = new IntersectionObserver(showLastMovie, {
-        root: null,
-        threshold: 0.5,
-      })
-
-      // NodeList의 각 요소들 감시 시작
-      io.observe(target);
     },
     
   }

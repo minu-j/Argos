@@ -1,18 +1,15 @@
 <template>
   <div>
-    <h1>Sign Up Page</h1>
-    <form @submit.prevent="signUp">
-      <label for="username">username : </label>
-      <input type="text" id="username" v-model="username"><br>
-
-      <label for="password1"> password : </label>
-      <input type="password" id="password1" v-model="password1"><br>
-
-      <label for="password2"> password confirmation : </label>
-      <input type="password" id="password2"  v-model="password2">
-      
-      <input type="submit" value="SignUp">
-    </form>
+    <div class="auth">
+      <h1 class="auth-title">SIGNUP</h1>
+      <form class="auth-form" @submit.prevent="signUp">
+        <input @keyup.enter="signUp" class="auth-form-input" placeholder="Username" type="text" id="username" v-model="username"><br>
+        <input @keyup.enter="signUp" class="auth-form-input" placeholder="Password" type="password" id="password1" v-model="password1"><br>
+        <input @keyup.enter="signUp" class="auth-form-input" placeholder="Password confirm" type="password" id="password2"  v-model="password2">
+        <div @click="signUp" class="auth-form-submit">Press enter</div>
+        <div @click="moveToLogin" class="auth-form-move">이미 회원이신가요?</div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -39,10 +36,13 @@ export default {
         password2: password2,
       }
       this.$store.dispatch('signUp', payload)
+    },
+    moveToLogin() {
+      this.$router.push({name: 'LoginView'})
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-@import "./SignUpView.scss";
+@import "./AuthForm.scss";
 </style>

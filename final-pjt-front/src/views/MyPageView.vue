@@ -2,7 +2,9 @@
   <div>
     <div class="mypage">
       <my-page-analysis @rated-movies="ratedMovies" class="mypage-analysis"/>
+      <user-follow/>
       <my-page-rating :rated-movie-data=ratedMovieData class="mypage-rating"/>
+      <my-page-review/>
     </div>
   </div>
 </template>
@@ -10,9 +12,11 @@
 <script>
 import MyPageAnalysis from '../components/MyPageAnalysis.vue'
 import MyPageRating from '../components/MyPageRating.vue'
+import MyPageReview from '../components/MyPageReview.vue'
+import UserFollow from '../components/UserFollow.vue'
 
 export default {
-  components: { MyPageAnalysis, MyPageRating },
+  components: { MyPageAnalysis, MyPageRating, MyPageReview, UserFollow },
   name: 'MyPageView',
   computed: {
     userInfo() {

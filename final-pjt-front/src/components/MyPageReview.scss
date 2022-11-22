@@ -1,4 +1,11 @@
 #review {
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   background-color: rgba(45, 45, 45, 0.977);
   padding: 20px;
   border-radius: 20px;
@@ -15,35 +22,11 @@
     margin-bottom: 20px;
   }
 
-  &-textarea {
-    height: 115px;
-    padding: 20px;
-    text-align: center;
-    background-color: rgba(45, 45, 45, 0);
-    font-size: 1rem;
-    color: white;
-    border: none;
-    resize: none;
-    outline: none;
-
-    &::-webkit-scrollbar {
-      width: 5px; /*스크롤바의 너비*/
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: rgb(80, 80, 80); /*스크롤바의 색상*/
-      border-radius: 20px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: rgb(48, 48, 48); /*스크롤바 트랙 색상*/
-    }
+  &-row {
+    width: 90vw;
+    max-width: 900px;
   }
 
-  &-button {
-    color: white;
-    margin-bottom: 30px;
-  }
 }
 
 .review {
@@ -52,11 +35,6 @@
   transition: all 0.2s ease-out;
   &:hover { // 마우스오버시 크기 키우기
     transform: scale(1.02);
-  }
-
-  &-my {
-    margin-top: 30px;
-    padding: 0px 10px;
   }
 
 
