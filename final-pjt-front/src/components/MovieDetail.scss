@@ -25,6 +25,12 @@
       margin-bottom: 60px;
       margin-inline: 20px;
 
+      cursor: pointer;
+
+      transition: all 0.2s ease-out;
+      &:hover { // 마우스오버시 크기 키우기
+        transform: scale(1.05);
+      }
 
       &-img {
         margin-right: 10px;
@@ -88,6 +94,8 @@
 #movie-detail-modal {
   z-index: 50;
 }
+
+
 
 
 

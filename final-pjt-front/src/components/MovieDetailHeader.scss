@@ -6,6 +6,12 @@
 
   // 포스터
   &-poster {
+    cursor: pointer;
+
+    transition: all 0.2s ease-out;
+    &:hover { // 마우스오버시 크기 키우기
+      transform: scale(1.02);
+    }
     width: 100%;
     max-width: 220px;
     border-radius: 20px;
@@ -54,7 +60,6 @@
       padding-inline: 15px;
       color: white;
       text-decoration: none;
-      background-color: gray;
       margin-right: 10px;
       background-color: #4a4a4a;
       border-radius: 20px;

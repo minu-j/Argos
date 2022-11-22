@@ -124,6 +124,17 @@
     & a {
       color: white;
       text-decoration: none;
+      padding: 3px 10px 3px 10px;
+      margin-right: 10px;
+      background-color: #4a4a4a;
+      border-radius: 20px;
+      text-shadow: 1px 1px 20px black;
+      box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+
+      &:hover {
+        outline: 3px white solid;
+        color: white;
+      }
     }
   }
 }

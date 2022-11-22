@@ -42,11 +42,11 @@
       }
     },
     props: {
-      recommendMovies: Array
+      recommendMovies: Object
     },
     methods: {
       goDetail(id) {
-        this.$router.push({ name: 'MovieDetail', params: { movie_id: id }, query: {movie_id: id}})
+        this.$router.push(`/movie/${id}`)
       }
     }
   }

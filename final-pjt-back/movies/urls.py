@@ -5,6 +5,7 @@ app_name = 'movies'
 urlpatterns = [
     path('movie/', views.all_movie_list), # 영화 리스트
     path('movie/<int:movie_pk>/', views.movie_detail), # 단일 영화
+    path('movie/random/', views.get_movie_random), # 랜덤 영화
 
     path('movie/genre/', views.genre_list), # 장르 리스트
     path('movie/genre/<int:genre_pk>/', views.genre_detail), # 장르별 조회

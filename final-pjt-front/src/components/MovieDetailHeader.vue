@@ -5,7 +5,7 @@
       <div class="movie row">
         <div class="col-10 col-md-4">
           <div>
-            <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w1280${movieData.poster_path}`" alt="">
+            <img @click="openPoster(movieData.poster_path)" class="movie-poster" :src="`https://image.tmdb.org/t/p/w1280${movieData.poster_path}`" alt="">
           </div>
         </div>
         <!-- 영화 설명 컬럼 -->
@@ -23,7 +23,7 @@
             </a>
           </div>
           <!-- 별점 컨테이너 -->
-          <star-rating :movie-data="movieData"/>
+          <star-rating @user-score="userScore" :movie-data="movieData"/>
         </div>
       </div>
     </div>
@@ -39,9 +39,21 @@ export default {
   props: {
     movieData: Object,
   },
+  data() {
+    return {
+      scoreData: null,
+    }
+  },
   methods: {
     goDetail(genre) {
       this.$emit('active-genre-modal', genre)
+    },
+    userScore(score) {
+      this.scoreData = score
+      this.$emit('user-score', score)
+    },
+    openPoster(link) {
+      window.open(`https://image.tmdb.org/t/p/w1280${link}`)
     }
   }
 }

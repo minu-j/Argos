@@ -17,7 +17,7 @@ export default {
   computed: {
     userInfo() {
       return this.$store.state.username
-    }
+    },
   },
   data() {
     return {
@@ -27,7 +27,10 @@ export default {
   methods: {
     ratedMovies(ratedMovieData) {
       this.ratedMovieData = ratedMovieData
-    }
+    },
+  },
+  mounted() {
+    console.log(window.location.pathname.replaceAll('/mypage/', ''))
   }
 }
 

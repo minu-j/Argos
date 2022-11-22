@@ -68,6 +68,7 @@ nav {
   justify-content: center;
 
   a {
+    cursor: pointer;
     padding: 0px;
     color: white;
     position: absolute;
@@ -75,7 +76,7 @@ nav {
     text-decoration: none;
 
     &:hover {
-      color: gray;
+      color: white;
       transition: all 0.2s;
       transform: scale(1.05);
     }

@@ -2,7 +2,7 @@
   <div id="movie-detail-page">
     <movie-detail-modal @close-modal="activeModalTogle" :modal-data="modalData" v-if="activeModal" id="movie-detail-modal"/>
     <div id="movie-detail">
-      <movie-detail-header @active-genre-modal="getGenreDetail" :movie-data="movieData"/>
+      <movie-detail-header @user-score="userScore" @active-genre-modal="getGenreDetail" :movie-data="movieData"/>
       <!-- 스트리밍 서비스 이용 가능시 렌더 -->
       <div v-if="movieData.providers.length > 0">
         <div class="movie-provider">
@@ -10,10 +10,13 @@
           <div>
             <span
               class="movie-provider-logo"
+              @click="goProvider(provider)"
               v-for="(provider, index) in movieData.providers" :key="`provider-${index}`"
               >
-              <img class="movie-provider-logo-img" :src="`https://image.tmdb.org/t/p/original${provider.logo_path}`" alt="">
-              {{ provider.name }}
+              <div>
+                <img class="movie-provider-logo-img" :src="`https://image.tmdb.org/t/p/original${provider.logo_path}`" alt="">
+                {{ provider.name }}
+              </div>
             </span>
           </div>
         </div>
@@ -27,7 +30,8 @@
       <movie-detail-director-swiper @active-director-modal="getDirectorDetail" id="detail-profile-swiper" :director-data="movieData.directors"/>
       <movie-detail-actor-swiper @active-actor-modal="getActorDetail" id="detail-profile-swiper" :actor-data="movieData.actors"/>
 
-      <div class="row">review comment 자리</div>
+      <!-- 리뷰 -->
+      <movie-detail-review @reload-movie-data="getMovieData" :user-score="scoreData" :movie-data="movieData"/>
     </div>
     <!-- 배경이미지 -->
     <div id="backdrop">
@@ -46,9 +50,10 @@ import MovieDetailHeader from './MovieDetailHeader.vue'
 import MovieDetailDirectorSwiper from './MovieDetailDirectorSwiper.vue'
 import MovieDetailActorSwiper from './MovieDetailActorSwiper.vue'
 import MovieDetailModal from './MovieDetailModal.vue'
+import MovieDetailReview from './MovieDetailReview.vue'
 
 export default {
-  components: { MovieDetailVideoSwiper, MovieDetailHeader, MovieDetailDirectorSwiper, MovieDetailActorSwiper, MovieDetailModal },
+  components: { MovieDetailVideoSwiper, MovieDetailHeader, MovieDetailDirectorSwiper, MovieDetailActorSwiper, MovieDetailModal, MovieDetailReview },
   name: 'MovieDetail',
   data() {
     return {
@@ -57,7 +62,8 @@ export default {
         category: null,
         data: {}
       },
-      activeModal: false
+      activeModal: false,
+      scoreData: null
     }
   },
   methods: {
@@ -99,28 +105,59 @@ export default {
         .catch((err) =>{
           console.log(err)
         })
-
     },
+    userScore(score) {
+      console.log(score)
+      this.scoreData = score
+    },
+    getMovieData() {
+      const movie_id = window.location.pathname.replaceAll('/movie/', '')
+      const API_URL = 'http://127.0.0.1:8000'
+      const Token = this.$store.state.token
+      console.log(`Token ${Token}`)
+      axios({
+        method: 'GET',
+        url: `${API_URL}/api/v1/movie/${movie_id}/`,
+        headers: {
+          Authorization: `Token ${Token}`
+        }
+      })
+        .then((res) =>{
+          console.log(res.data)
+          this.movieData = res.data
+        })
+        .catch((err) =>{
+          console.log(err)
+          this.$router.push({ name: 'NotFound404' })
+        })
+    },
+    // 대표적인 provider url 연결
+    goProvider(provider) {
+      console.log(provider)
+      if (provider.name === 'Netflix') {
+        window.open('https://www.netflix.com/kr/')
+
+      } else if (provider.name === 'Watcha') {
+        window.open('https://watcha.com/')
+      
+      } else if (provider.name === 'Amazon Prime Video') {
+        window.open('https://www.primevideo.com/')
+
+      } else if (provider.name === 'Disney Plus') {
+        window.open('https://www.disneyplus.com/ko-kr/')
+
+      } else if (provider.name === 'Apple TV Plus') {
+        window.open('https://tv.apple.com/kr/')
+
+      } else if (provider.name === 'wavve') {
+        window.open('https://www.wavve.com/')
+      
+      }
+
+    }
   },
   mounted() {
-    const movie_id = this.$route.query.movie_id
-    const API_URL = 'http://127.0.0.1:8000'
-    const Token = this.$store.state.token
-    console.log(`Token ${Token}`)
-    axios({
-      method: 'GET',
-      url: `${API_URL}/api/v1/movie/${movie_id}/`,
-      headers: {
-        Authorization: `Token ${Token}`
-      }
-    })
-      .then((res) =>{
-        console.log(res.data)
-        this.movieData = res.data
-      })
-      .catch((err) =>{
-        console.log(err)
-      })
+    this.getMovieData()
   }
 }
 </script>

@@ -76,8 +76,8 @@ def get_user_recommend(request, user_pk):
     genre_list = [] # 장르
     for key, value in sorted(recommend_data['like_genre'].items(), key=lambda x:x[1], reverse=True)[:4]: # 선호하는 4개 값
         genre_list.append(key)
-    if len(genre_list) > 1:
-        genre_list = random.sample(genre_list, 2) # 랜덤으로 2개 뽑기
+    if len(genre_list) > 2:
+        genre_list = random.sample(genre_list, 3) # 랜덤으로 2개 뽑기
     else:
         genre_list = random.sample(genre_list, 1)
     for genre_id in genre_list:
@@ -86,19 +86,20 @@ def get_user_recommend(request, user_pk):
         select_len = 10 # 10개 영화를 기본으로 뽑는데, 영화가 10개가 안되면 길이에 맞게 선정
         if len(serializer.data["movie_set"]) < 10:
             select_len = len(serializer.data["movie_set"])
-        genre_recommend = {
-            'prefix': random.choice(prefix),
-            'category': '장르',
-            'name': serializer.data["name"],
-            'movies': random.sample(serializer.data["movie_set"], select_len)
-        }
-        response_data['data'].append(genre_recommend)
+        if len(serializer.data["movie_set"]) >= 5:
+            genre_recommend = {
+                'prefix': random.choice(prefix),
+                'category': '장르',
+                'name': serializer.data["name"],
+                'movies': random.sample(serializer.data["movie_set"], select_len)
+            }
+            response_data['data'].append(genre_recommend)
 
     actor_list = [] # 배우
     for key, value in sorted(recommend_data['like_actor'].items(), key=lambda x:x[1], reverse=True)[:4]: # 선호하는 4개 값
         actor_list.append(key)
-    if len(actor_list) > 1:
-        actor_list = random.sample(actor_list, 2) # 랜덤으로 2개 뽑기
+    if len(actor_list) > 2:
+        actor_list = random.sample(actor_list, 3) # 랜덤으로 2개 뽑기
     else:
         actor_list = random.sample(actor_list, 1)
     for actor_id in actor_list:
@@ -107,19 +108,20 @@ def get_user_recommend(request, user_pk):
         select_len = 10 # 10개 영화를 기본으로 뽑는데, 영화가 10개가 안되면 길이에 맞게 선정
         if len(serializer.data["movie_set"]) < 10:
             select_len = len(serializer.data["movie_set"])
-        actor_recommend = {
-            'prefix': random.choice(prefix),
-            'category': '배우',
-            'name': serializer.data["name"],
-            'movies': random.sample(serializer.data["movie_set"], select_len)
-        }
-        response_data['data'].append(actor_recommend)
+        if len(serializer.data["movie_set"]) >= 5:
+            actor_recommend = {
+                'prefix': random.choice(prefix),
+                'category': '배우',
+                'name': serializer.data["name"],
+                'movies': random.sample(serializer.data["movie_set"], select_len)
+            }
+            response_data['data'].append(actor_recommend)
 
     director_list = [] # 감독
     for key, value in sorted(recommend_data['like_director'].items(), key=lambda x:x[1], reverse=True)[:4]: # 선호하는 4개 값
         director_list.append(key)
-    if len(director_list) > 1:
-        director_list = random.sample(director_list, 2) # 랜덤으로 2개 뽑기
+    if len(director_list) > 2:
+        director_list = random.sample(director_list, 3) # 랜덤으로 2개 뽑기
     else:
         director_list = random.sample(director_list, 1)
     for director_id in director_list:
@@ -128,19 +130,20 @@ def get_user_recommend(request, user_pk):
         select_len = 10 # 10개 영화를 기본으로 뽑는데, 영화가 10개가 안되면 길이에 맞게 선정
         if len(serializer.data["movie_set"]) < 10:
             select_len = len(serializer.data["movie_set"])
-        director_recommend = {
-            'prefix': random.choice(prefix),
-            'category': '감독',
-            'name': serializer.data["name"],
-            'movies': random.sample(serializer.data["movie_set"], select_len)
-        }
-        response_data['data'].append(director_recommend)
+        if len(serializer.data["movie_set"]) >= 5:
+            director_recommend = {
+                'prefix': random.choice(prefix),
+                'category': '감독',
+                'name': serializer.data["name"],
+                'movies': random.sample(serializer.data["movie_set"], select_len)
+            }
+            response_data['data'].append(director_recommend)
 
     keyword_list = [] # 키워드
     for key, value in sorted(recommend_data['like_keyword'].items(), key=lambda x:x[1], reverse=True)[:4]: # 선호하는 4개 값
         keyword_list.append(key)
-    if len(keyword_list) > 1:
-        keyword_list = random.sample(keyword_list, 2) # 랜덤으로 2개 뽑기
+    if len(keyword_list) > 2:
+        keyword_list = random.sample(keyword_list, 3) # 랜덤으로 2개 뽑기
     else:
         keyword_list = random.sample(keyword_list, 1)
     for keyword_id in keyword_list:
@@ -149,13 +152,14 @@ def get_user_recommend(request, user_pk):
         select_len = 10 # 10개 영화를 기본으로 뽑는데, 영화가 10개가 안되면 길이에 맞게 선정
         if len(serializer.data["movie_set"]) < 10:
             select_len = len(serializer.data["movie_set"])
-        keyword_recommend = {
-            'prefix': random.choice(prefix),
-            'category': '키워드',
-            'name': serializer.data["name"],
-            'movies': random.sample(serializer.data["movie_set"], select_len)
-        }
-        response_data['data'].append(keyword_recommend)
+        if len(serializer.data["movie_set"]) >= 5:
+            keyword_recommend = {
+                'prefix': random.choice(prefix),
+                'category': '키워드',
+                'name': serializer.data["name"],
+                'movies': random.sample(serializer.data["movie_set"], select_len)
+            }
+            response_data['data'].append(keyword_recommend)
 
     # 랜덤으로 표시하도록 데이터 섞기
     random.shuffle(response_data['data'])
@@ -167,7 +171,9 @@ def get_user_recommend(request, user_pk):
 
 # 유저가 준 모든 평점의 영화 리스트를 기반으로 취향을 계산하여 반환
 @api_view(['GET'])
-def get_user_analysis(request, user_pk):
+def get_user_analysis(request, username):
+    user = get_object_or_404(User, username=username)
+    user_pk = user.id
     ratings = get_list_or_404(Rating, user_id=user_pk)
     serializer = RatingListSerializers(ratings, many=True)
 

@@ -15,7 +15,7 @@
           <div id="movie-search-select-vote_average">★ - {{ selectMovieData.vote_average }}</div>
           <div id="movie-search-select-release_date">{{ selectMovieData.release_date }}</div>
           <div id="movie-search-select-overview">{{ selectMovieData.overview }}</div>
-          <a :href="`https://www.themoviedb.org/movie/${ selectMovieData.id }?language=ko`" target="_blank">더 보기</a>
+          <a id="movie-search-select-more"  :href="`https://www.themoviedb.org/movie/${ selectMovieData.id }?language=ko`" target="_blank">더 보기</a>
         </div>
       </div>
     </div>
