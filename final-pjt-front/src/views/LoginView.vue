@@ -3,13 +3,13 @@
     <div class="auth">
       <h1 class="auth-title">LOGIN</h1>
       <form class="auth-form" @submit.prevent="logIn">
-        <input @keyup.enter="logIn" class="auth-form-input" placeholder="Username" type="text" id="username" v-model="username"><br>
-        <div class="auth-password" @click="passwordShowTogle">
-          <img class="password-show" v-if="passwordShow" src="@/assets/eye.png" alt="">
-          <img class="password-show" v-else src="@/assets/hidden.png" alt="">
-          <input @keyup.enter="logIn" class="auth-form-input" placeholder="Password" type="password" id="password" v-model="password"><br>
+        <input @keyup.enter="logIn" class="auth-form-input" placeholder="Username" type="text" id="username" v-model="username">
+        <div class="auth-password">
+          <img @mouseup="passwordShowTogle" class="password-show" v-if="passwordShow" src="@/assets/eye.png" alt="">
+          <img @mousedown="passwordShowTogle" class="password-show" v-else src="@/assets/hidden.png" alt="">
+          <input @keyup.enter="logIn" class="auth-form-input" placeholder="Password" type="password" id="password" v-model="password">
         </div>
-        <div @click="logIn" class="auth-form-submit">Press enter</div>
+        <div @click="logIn" class="auth-form-submit">Press Enter</div>
         <div @click="moveToSignup" class="auth-form-move">아직 회원이 아니신가요?</div>
       </form>
     </div>
@@ -44,7 +44,18 @@ export default {
       this.$router.push({name: 'SignUpView'})
     },
     passwordShowTogle() {
-      this.passwordShow = !this.passwordShow
+      
+      const passwordInput = document.querySelector('#password')
+      if (this.passwordShow) {
+        passwordInput.removeAttribute('type')
+        passwordInput.setAttribute('type', 'password')
+        this.passwordShow = !this.passwordShow
+      } else {
+        passwordInput.removeAttribute('type')
+        passwordInput.setAttribute('type', 'text')
+        this.passwordShow = !this.passwordShow
+      }
+      
     }
   }
 }

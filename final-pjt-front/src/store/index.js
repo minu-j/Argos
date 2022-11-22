@@ -170,7 +170,9 @@ export default new Vuex.Store({
             })
 
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          console.log(err)
+        })
     },
     logIn(context, payload) {
       const username = payload.username
