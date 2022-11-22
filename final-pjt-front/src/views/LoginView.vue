@@ -1,15 +1,18 @@
 <template>
   <div>
-    <h1>LogIn Page</h1>
-    <form @submit.prevent="logIn">
-      <label for="username">username : </label>
-      <input type="text" id="username" v-model="username"><br>
-
-      <label for="password"> password : </label>
-      <input type="password" id="password" v-model="password"><br>
-
-      <input type="submit" value="logIn">
-    </form>
+    <div class="auth">
+      <h1 class="auth-title">LOGIN</h1>
+      <form class="auth-form" @submit.prevent="logIn">
+        <input @keyup.enter="logIn" class="auth-form-input" placeholder="Username" type="text" id="username" v-model="username"><br>
+        <div class="auth-password" @click="passwordShowTogle">
+          <img class="password-show" v-if="passwordShow" src="@/assets/eye.png" alt="">
+          <img class="password-show" v-else src="@/assets/hidden.png" alt="">
+          <input @keyup.enter="logIn" class="auth-form-input" placeholder="Password" type="password" id="password" v-model="password"><br>
+        </div>
+        <div @click="logIn" class="auth-form-submit">Press enter</div>
+        <div @click="moveToSignup" class="auth-form-move">아직 회원이 아니신가요?</div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -20,6 +23,7 @@ export default {
     return {
       username: null,
       password: null,
+      passwordShow: false
     }
   },
   methods: {
@@ -35,10 +39,16 @@ export default {
     },
     logOut() {
       this.$store.dispatch('logout')
+    },
+    moveToSignup() {
+      this.$router.push({name: 'SignUpView'})
+    },
+    passwordShowTogle() {
+      this.passwordShow = !this.passwordShow
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-@import "./LogInView.scss";
+@import "./AuthForm.scss";
 </style>
