@@ -4,6 +4,7 @@ import StartView from '@/views/StartView'
 import HomeView from '@/views/HomeView'
 import TicketView from '@/views/TicketView'
 import PlayView from '@/views/PlayView'
+import PlayDetail from '@/components/PlayDetail'
 import NewsView from '@/views/NewsView'
 import LoginView from '@/views/LoginView'
 import SignUpView from '@/views/SignUpView'
@@ -44,6 +45,14 @@ export const constantRoutes = [
     path: '/play',
     name: 'PlayView',
     component: PlayView,
+    meta: {
+      title: 'ARGOS Play'
+    }
+  },
+  {
+    path: '/play/:videoKey',
+    name: 'PlayDetail',
+    component: PlayDetail,
     meta: {
       title: 'ARGOS Play'
     }

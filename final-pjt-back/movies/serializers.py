@@ -85,10 +85,18 @@ class MovieListSerializer(serializers.ModelSerializer):
 
 # 전체 영화 id, 제목, 포스터 주소만 조회
 class MovieSearchSerializer(serializers.ModelSerializer):
-        
+
+    class GetVideoKeySerializer(serializers.ModelSerializer):
+
         class Meta:
-            model = Movie
-            fields = ('pk', 'id', 'title', 'poster_path', 'backdrop_path')
+            model = Video
+            fields = ('key',)
+            
+    videos = GetVideoKeySerializer(many=True)
+        
+    class Meta:
+        model = Movie
+        fields = ('pk', 'id', 'title', 'poster_path', 'backdrop_path', 'videos')
         
 
 # 단일 영화 항목 조회
@@ -258,3 +266,26 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
+
+
+############################ 플레이 ############################
+
+
+# 댓글 조회, 작성, 수정, 삭제
+class PlayListSerializer(serializers.ModelSerializer): 
+
+    class PlaySerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = PlayMovie
+            fields = '__all__'
+
+
+
+    videos = PlaySerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Playlist
+        fields = '__all__'
+
+

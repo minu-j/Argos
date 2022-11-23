@@ -32,4 +32,6 @@ urlpatterns = [
     
     path('review/<int:review_pk>/comment/', views.comment_create), # 코멘트 생성
     path('comment/<int:comment_pk>/', views.comment_detail), # 코멘트 조회, 삭제
+
+    path('play/', views.play_list), # 플레이 조회
 ]

@@ -89,3 +89,13 @@ class Comment(models.Model): # 리뷰의 댓글
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_comment')
+
+
+class Playlist(models.Model): # 플레이리스트
+    title = models.CharField(max_length=50)
+
+
+class PlayMovie(models.Model): # 영화
+    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name='videos')
+    title = models.CharField(max_length=50)
+    key = models.CharField(max_length=50)
