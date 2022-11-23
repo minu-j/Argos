@@ -24,6 +24,7 @@
       height: 35px;
       border: none;
       padding: 20px;
+      width: 100%;
       background-color: rgb(56, 56, 56);
       box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
       border-radius: 20px;
@@ -39,9 +40,34 @@
     }
   }
   &-password {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 20px;
+    
     width: 300px;
   }
 }
 .password-show {
   position: absolute;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.check-word {
+  text-align: left;
+  font-size: 10pt;
+  margin-top: 5px;
+
+  #info {
+    &-green {
+      color: rgb(54, 171, 107);
+    }
+    &-red {
+      color: rgb(197, 60, 80);
+    }
+    &-gray {
+      color: gray;
+    }
+  }
 }

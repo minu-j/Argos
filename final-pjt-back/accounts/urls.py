@@ -12,8 +12,11 @@ urlpatterns = [
    path('rating/<int:movie_pk>/<int:user_pk>/', views.get_user_rating), # 유저의 단일영화 별점 조회
    path('recommend/<int:user_pk>/', views.get_user_recommend), # 사용자의 추천 영화 반환
    path('analysis/<str:username>/', views.get_user_analysis), # 사용자의 취향정보, 그동안 평가한 영화 반환
-   path('review/<str:username>/', views.get_user_review), # 사용자의 취향정보, 그동안 평가한 영화 반환
-   path('comment/<str:username>/', views.get_user_comment), # 사용자의 취향정보, 그동안 평가한 영화 반환
+   path('review/<str:username>/', views.get_user_review), # 사용자의 리뷰 작성 목록 반환
+   path('comment/<str:username>/', views.get_user_comment), # 사용자의 코멘트 작성 목록 반환
+
+   path('usernameprecheck/<str:username>/', views.precheck_username), # username 사용가능 확인
+   path('passwordprecheck/', views.precheck_password), # 비밀번호 확인
 
    path('delete/', views.delete, name='delete'),  # 회원 탈퇴
    path('follow/<str:username>/', views.follow, name='follow'),   # 팔로우..
