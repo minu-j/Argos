@@ -258,13 +258,15 @@ def get_user_analysis(request, username):
 
 #########################################################################
 
-# 회원 탈퇴
+# 회원탈퇴
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def delete(request):
-    if request.user.is_authenticated:
-        request.user.delete()
-    return Response(request)
+@permission_classes([IsAuthenticated]) # 인증된 사용자만 권한 허용
+def user_delete(request):
+    request.user.delete()
+    data = {
+            'content': f'{request.user}님의 탈퇴처리가 완료되었습니다.',
+        }
+    return Response(data, status=status.HTTP_204_NO_CONTENT)
 
 
 # 팔로우

@@ -4,7 +4,6 @@ import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 import router from '@/router'
 import cheerio from 'cheerio'
-// import { remove } from 'cheerio/lib/api/manipulation'
 
 
 Vue.use(Vuex)
@@ -53,12 +52,17 @@ export default new Vuex.Store({
 
     ///////////// 뉴스 //////////////////
     newsTable: [],
-    newsPage: 0
+    newsPage: 0,
+
   },
   getters: {
     isLogin(state) {
       return state.token ? true : false
-    }
+    },
+    
+    // 회원 탈퇴
+    authHeader: state => ({ Authorization: `Token ${state.token}` }),
+
   },
   mutations: {
     GET_LOCATION(state, payload) { // 위치정보 수집
@@ -87,11 +91,11 @@ export default new Vuex.Store({
       router.push({name: 'HomeView'})
     },
 
-  //   DELETE_TOKEN(state){
-  //     state.token = remove.state.token
-  //     router.push({name: 'HomeView'})
-  // },
-  
+    // 회원 탈퇴
+    saveToken({ commit }, token) {
+      commit('SAVE_TOKEN', token)
+      localStorage.setItem('token', token) // localStorage에 token 추가
+    },
   ////////////////// 박스오피스 /////////////////////
     GET_TODAY(state, payload) {
       console.log()
@@ -222,6 +226,28 @@ export default new Vuex.Store({
 
         })
         .catch(err => console.log(err))
+    },
+
+    //회원탈퇴
+    signout(context,) {
+      if (confirm('정말 탈퇴하시겠습니까?')){
+        axios({
+          url: `${API_URL}/accounts/delete/`,
+          method: 'post',
+          headers: context.getters.authHeader,
+        })
+        .then(() => {
+          localStorage.removeItem('vuex')
+          context.commit('NULL_TOKEN')
+          alert('성공적으로 회원탈퇴 처리되었습니다.')
+          router.push({ name: 'HomeView' })
+          this.$router.go(this.$router.currentRoute)
+          
+        })
+        .catch(err => {
+          console.error(err.response)
+        })
+      }
     },
   ////////////////// 박스오피스 데이터 불러오기 ///////////////////
       
