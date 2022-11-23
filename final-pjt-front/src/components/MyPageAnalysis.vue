@@ -2,9 +2,9 @@
   <div>
     <div v-if="!isEmpty" class="analysis">
       <div class="analysis-desctiption">
-        평가해주신 {{ userRating[1].length + userRating[2].length + userRating[3].length + userRating[4].length + userRating[5].length }}개의 영화를 바탕으로 취향을 분석해봤어요.
+        {{userName}}님이 평가하신 {{ userRating[1].length + userRating[2].length + userRating[3].length + userRating[4].length + userRating[5].length }}개 영화를 바탕으로 취향을 분석해봤어요.
       </div>
-      <div class="analysis-title">{{userName}}님이 선호하는 키워드</div>
+      <div class="analysis-title">선호하는 키워드</div>
       <div v-if="likeKeyword.length">
         <wordcloud
           :data="likeKeyword"
@@ -44,13 +44,14 @@
           </div>
         </div>
       </div>
+      <my-page-analysis-graph :user-rating="userRating"/>
       <div v-if="userName === this.$store.state.username" id="offer-rating">
         더 많은 영화를 평가해보세요
         <div @click="goRating" id="offer-rating-link">본 영화 평가하러 가기 →</div>
       </div>
     </div>
     <div v-else id="offer-rating">
-      앗 아직 평가를 안하셨네요!
+      앗! 아직 평가를 안하셨네요!
       <div @click="goRating" id="offer-rating-link">본 영화 평가하러 가기 →</div>
     </div>
   </div>
@@ -59,10 +60,12 @@
 <script>
 import axios from 'axios'
 import wordcloud from 'vue-wordcloud'
+import MyPageAnalysisGraph from './MyPageAnalysisGraph.vue'
 
 export default {
   components: {
-    wordcloud
+    wordcloud,
+    MyPageAnalysisGraph,
   },
   name: 'MyPageAnalysis',
   data () {

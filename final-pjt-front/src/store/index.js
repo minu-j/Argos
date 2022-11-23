@@ -174,55 +174,6 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    logIn(context, payload) {
-      const username = payload.username
-      const password = payload.password
-
-      axios({
-        method: 'post',
-        url: `${API_URL}/accounts/login/`,
-        data: {
-          username, password
-        }
-      })
-        .then(res => {
-          const payload = {
-            token: res.data.key,
-            isFirst: false
-          }
-          context.commit('SAVE_TOKEN', payload)
-
-          axios({
-            method: 'get',
-            url: `${API_URL}/accounts/user/`,
-            headers: {
-              Authorization: `Token ${payload.token}`
-            }
-          })
-            .then(res => {
-              const payload = {
-                userId: res.data.pk,
-                username: res.data.username
-              }
-              console.log(payload)
-              context.commit('SAVE_USER_DATA', payload)
-              })
-            .then(() =>{
-              if (payload.isFirst) {
-                // 회원가입 후 영화 평가 페이지로 이동
-                router.push({ name:'MovieRating' })
-                // 로그인 후 홈으로 이동
-              } else {
-                router.push({ name:'HomeView' })
-              }
-            })
-            .catch(err => {
-              console.log(err)
-            })
-
-        })
-        .catch(err => console.log(err))
-    },
   ////////////////// 박스오피스 데이터 불러오기 ///////////////////
       
     getBoxoffice(context) {

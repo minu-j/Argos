@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div id="gradient-left"></div>
     <div id="gradient-right"></div>
     <div id="movie-swiper-title">
       <div id="movie-swiper-title-box">
@@ -35,7 +34,7 @@
         swiperOption: {
           slidesPerView: 5,
           slidesPerGroup: 1,
-          loop: true,
+          loop: false,
           navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'

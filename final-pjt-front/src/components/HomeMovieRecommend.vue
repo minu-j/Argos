@@ -6,6 +6,11 @@
           <MovieSwiper :recommend-movies="recommendMovies"/>
         </div>
       </div>
+      <div>
+        <div id="get-next-row">
+          <movie-swiper-loader id="recommend-swiper"/>
+        </div>
+      </div>
     </div>
     <div v-else >
       <div v-if="isLogin" id="offer-rating">
@@ -24,12 +29,13 @@
 import axios from 'axios'
 
 import MovieSwiper from './MovieSwiper.vue'
+import MovieSwiperLoader from './MovieSwiperLoader.vue'
 export default {
-  components: { MovieSwiper },
+  components: { MovieSwiper, MovieSwiperLoader },
   name: 'HomeMovieRecommend',
   data() {
     return {
-      recommendMovieData: {}
+      recommendMovieData: []
     }
   },
   computed: {
@@ -43,13 +49,55 @@ export default {
     },
     goRating() {
       this.$router.push({ name:'MovieRating' })
+    },
+    setObserver() {
+      // 로더 띄우기 용 감시 옵저버
+      const target = document.querySelector('#get-next-row').firstChild
+
+      const showLastMovie = (entries) => {
+
+        // Destructuring
+        const [{isIntersecting}] = entries;
+        
+        if (isIntersecting) {
+          this.getMovieData()
+        }
+      };
+
+      // intersection observer 생성자 초기화 (관찰자)
+      const io = new IntersectionObserver(showLastMovie, {
+        root: null,
+        threshold: 0.5,
+      })
+
+      // NodeList의 각 요소들 감시 시작
+      io.observe(target);
+    },
+    getMovieData() {
+      const user_id = this.$store.state.userId
+      const API_URL = 'http://127.0.0.1:8000'
+      const Token = this.$store.state.token
+      axios({
+        method: 'GET',
+        url: `${API_URL}/accounts/recommend/${user_id}/`,
+        headers: {
+          Authorization: `Token ${Token}`
+        }
+      })
+        .then((res) =>{
+          res.data.data.forEach(element => {
+            this.recommendMovieData.push(element)
+          });
+        })
+        .catch((err) =>{
+          console.log(err)
+        })
     }
   },
   mounted() {
     const user_id = this.$store.state.userId
     const API_URL = 'http://127.0.0.1:8000'
     const Token = this.$store.state.token
-    console.log(`Token ${Token}`)
     axios({
       method: 'GET',
       url: `${API_URL}/accounts/recommend/${user_id}/`,
@@ -59,7 +107,11 @@ export default {
     })
       .then((res) =>{
         this.recommendMovieData = res.data.data
-        console.log(this.recommendMovieData)
+      })
+
+      // 영화 로딩 후 옵저버 설정
+      .then(() => {
+        this.setObserver()
       })
       .catch((err) =>{
         console.log(err)
