@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="mypage">
-      <my-page-analysis @rated-movies="ratedMovies" class="mypage-analysis"/>
+      <div class="mypage-username">{{userName}}</div>
       <user-follow/>
+      <my-page-analysis @rated-movies="ratedMovies" class="mypage-analysis"/>
       <my-page-rating :rated-movie-data=ratedMovieData class="mypage-rating"/>
       <my-page-review/>
     </div>
@@ -25,7 +26,8 @@ export default {
   },
   data() {
     return {
-      ratedMovieData: {}
+      ratedMovieData: {},
+      userName: null
     }
   },
   methods: {
@@ -34,7 +36,7 @@ export default {
     },
   },
   mounted() {
-    console.log(window.location.pathname.replaceAll('/mypage/', ''))
+    this.userName = window.location.pathname.replaceAll('/mypage/', '')
   }
 }
 

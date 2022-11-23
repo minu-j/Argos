@@ -10,7 +10,7 @@
                 <span class="review-gold" v-for="(goldstar, index) in userScore" :key="`goldstar-${index}`">★</span>
                 <span class="review-silver" v-for="(silverstar, index) in 5 - userScore" :key="`silverstar-${index}`">★</span>
               </div>
-              <span v-else class="review-silver">별점이 입력되지 않았어요</span>
+              <span v-else class="review-silver">먼저 별점을 입력해주세요</span>
             </div>
             <textarea @keyup.enter="createReview" name="" id="review-textarea" rows="5" placeholder="이 영화의 한줄평"></textarea>
             <button id="review-button" @click="createReview">저장</button>

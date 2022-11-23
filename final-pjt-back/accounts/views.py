@@ -31,7 +31,6 @@ def get_user_info(request, username):
 
 # 사용자가 단일 영화에 준 평점 조회
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def get_user_rating(request, movie_pk, user_pk):
     rating = get_object_or_404(Rating, movie_id=movie_pk, user_id=user_pk)
     serializer = RatingSerializers(rating)
@@ -42,7 +41,6 @@ def get_user_rating(request, movie_pk, user_pk):
 
 # 유저가 준 모든 평점의 영화 리스트를 기반으로 취향을 계산하여 반환
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def get_user_recommend(request, user_pk):
     ratings = get_list_or_404(Rating, user_id=user_pk)
     serializer = RatingListSerializers(ratings, many=True)
@@ -85,7 +83,7 @@ def get_user_recommend(request, user_pk):
     for key, value in sorted(recommend_data['like_genre'].items(), key=lambda x:x[1], reverse=True)[:4]: # 선호하는 4개 값
         genre_list.append(key)
     if len(genre_list) > 2:
-        genre_list = random.sample(genre_list, 3) # 랜덤으로 2개 뽑기
+        genre_list = random.sample(genre_list, 1) # 랜덤으로 2개 뽑기
     else:
         genre_list = random.sample(genre_list, 1)
     for genre_id in genre_list:
@@ -104,10 +102,10 @@ def get_user_recommend(request, user_pk):
             response_data['data'].append(genre_recommend)
 
     actor_list = [] # 배우
-    for key, value in sorted(recommend_data['like_actor'].items(), key=lambda x:x[1], reverse=True)[:4]: # 선호하는 4개 값
+    for key, value in sorted(recommend_data['like_actor'].items(), key=lambda x:x[1], reverse=True)[:6]: # 선호하는 4개 값
         actor_list.append(key)
     if len(actor_list) > 2:
-        actor_list = random.sample(actor_list, 3) # 랜덤으로 2개 뽑기
+        actor_list = random.sample(actor_list, 2) # 랜덤으로 2개 뽑기
     else:
         actor_list = random.sample(actor_list, 1)
     for actor_id in actor_list:
@@ -126,10 +124,10 @@ def get_user_recommend(request, user_pk):
             response_data['data'].append(actor_recommend)
 
     director_list = [] # 감독
-    for key, value in sorted(recommend_data['like_director'].items(), key=lambda x:x[1], reverse=True)[:4]: # 선호하는 4개 값
+    for key, value in sorted(recommend_data['like_director'].items(), key=lambda x:x[1], reverse=True)[:6]: # 선호하는 4개 값
         director_list.append(key)
     if len(director_list) > 2:
-        director_list = random.sample(director_list, 3) # 랜덤으로 2개 뽑기
+        director_list = random.sample(director_list, 2) # 랜덤으로 2개 뽑기
     else:
         director_list = random.sample(director_list, 1)
     for director_id in director_list:
@@ -148,10 +146,10 @@ def get_user_recommend(request, user_pk):
             response_data['data'].append(director_recommend)
 
     keyword_list = [] # 키워드
-    for key, value in sorted(recommend_data['like_keyword'].items(), key=lambda x:x[1], reverse=True)[:4]: # 선호하는 4개 값
+    for key, value in sorted(recommend_data['like_keyword'].items(), key=lambda x:x[1], reverse=True)[:8]: # 선호하는 4개 값
         keyword_list.append(key)
     if len(keyword_list) > 2:
-        keyword_list = random.sample(keyword_list, 3) # 랜덤으로 2개 뽑기
+        keyword_list = random.sample(keyword_list, 2) # 랜덤으로 2개 뽑기
     else:
         keyword_list = random.sample(keyword_list, 1)
     for keyword_id in keyword_list:
@@ -179,7 +177,6 @@ def get_user_recommend(request, user_pk):
 
 # 유저가 준 모든 평점의 영화 리스트를 기반으로 취향을 계산하여 반환
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def get_user_analysis(request, username):
     user = get_object_or_404(User, username=username)
     user_pk = user.id
@@ -315,7 +312,6 @@ def get_user_follow(request, username):
 ############################ 유저가 작성한 리뷰, 코멘트 조회 #############################
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def get_user_review(request, username):
     user = get_object_or_404(User, username=username)
     serializer = UserInfoSerializers(user)
@@ -326,7 +322,6 @@ def get_user_review(request, username):
     return Response(serializer.data)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def get_user_comment(request, username):
     user = get_object_or_404(User, username=username)
     serializer = UserInfoSerializers(user)

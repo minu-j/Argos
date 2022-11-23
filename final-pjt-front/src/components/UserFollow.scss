@@ -1,0 +1,85 @@
+.follow {
+  &-people {
+    margin-top: 40px;
+    display: flex;
+    width: 90vw;
+    max-width: 600px;
+    & hr {
+      border: 1px solid white;
+    }
+
+    &-box {
+      width: 50%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &-title {
+        font-size: 14pt;
+      }
+      &-count {
+        font-size: 22pt;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      &-list {
+        width: 90%;
+        height: 100px;
+        overflow-y: scroll;
+        padding: 10px;
+        background-color: rgba(45, 45, 45, 0.977);
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+
+        &::-webkit-scrollbar {
+          width: 5px; /*스크롤바의 너비*/
+        }
+    
+        &::-webkit-scrollbar-thumb {
+          background-color: rgb(80, 80, 80); /*스크롤바의 색상*/
+          border-radius: 20px;
+        }
+    
+        &::-webkit-scrollbar-track {
+          background-color: rgba(48, 48, 48, 0); /*스크롤바 트랙 색상*/
+        }
+
+        &-item {
+          display: inline-block;
+          cursor: pointer;
+          margin: 3px;
+          background-color: #4a4a4a;
+          border-radius: 20px;
+          text-shadow: 1px 1px 20px black;
+          padding-inline: 10px;
+
+          &:hover {
+            outline: 3px white solid;
+          }
+        }
+
+      }
+    }
+  }
+  &-user {
+    padding: 20px;
+    text-align: center;
+    &-title {
+
+    }
+    &-btn {
+      cursor: pointer;
+      margin-right: 10px;
+      background-color: #4a4a4a;
+      border-radius: 20px;
+      text-shadow: 1px 1px 20px black;
+      padding-inline: 10px;
+      margin-inline: 10px;
+
+      &:hover {
+        outline: 3px white solid;
+      }
+    }
+  }
+}
