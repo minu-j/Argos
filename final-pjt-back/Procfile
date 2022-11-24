@@ -1,0 +1,1 @@
+web: gunicorn argos-movie.wsgi --log-file -

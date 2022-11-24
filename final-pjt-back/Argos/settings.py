@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
+
+# Heroku
+DEBUG = False
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,8 +92,10 @@ SPECTACULAR_SETTINGS = {
     # OTHER SETTINGS
 }
 
-
 MIDDLEWARE = [
+    # Heroku
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
@@ -192,3 +199,6 @@ AUTH_USER_MODEL = 'accounts.User'
 #Django Session Timeout Code
 # SESSION_COOKIE_AGE = 1200
 # SESSION_SAVE_EVERY_REQUEST = True
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
