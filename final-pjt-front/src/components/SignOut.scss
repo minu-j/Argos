@@ -1,0 +1,13 @@
+.out {
+  cursor: pointer;
+  border: 2px solid rgb(197, 60, 80);
+  padding: 10px 15px 10px 15px;
+  border-radius: 20px;
+  color: rgb(197, 60, 80);
+  margin-top: 60px;
+
+  &:hover {
+    background-color: rgb(197, 60, 80);
+    color: rgb(255, 255, 255);
+  }
+}
