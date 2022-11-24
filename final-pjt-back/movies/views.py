@@ -222,3 +222,13 @@ def comment_detail(request, comment_pk):
     elif request.method == 'DELETE':
         comment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+########################### 댓글 ######################################
+
+# 리뷰에 댓글 쓰기
+@api_view(['GET'])
+def play_list(request):
+    playlist = get_list_or_404(Playlist)
+    serializer = PlayListSerializer(playlist, many=True)
+    return Response(serializer.data)

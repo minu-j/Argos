@@ -5,9 +5,9 @@
       <form class="auth-form" @submit.prevent="signUp">
         <input @keyup="checkKorean" class="auth-form-input" placeholder="Username" type="text" id="username" v-model="username">
         <div class="check-word">
-          <div id="info-gray">영문 대소문자, 숫자만 입력 가능합니다.</div>
-          <div v-if="usernameReduplication === true" id="info-red">✗ 이미 사용중인 이름입니다.</div>
-          <div v-if="usernameReduplication === false" id="info-green">✓ 사용할 수 있는 이름입니다.</div>
+          <div class="info-gray">영문 대소문자, 숫자만 입력 가능합니다.</div>
+          <div v-if="usernameReduplication === true" class="info-red">✗ 이미 사용중인 이름입니다.</div>
+          <div v-if="usernameReduplication === false" class="info-green">✓ 사용할 수 있는 이름입니다.</div>
         </div>
         <div v-if="username && usernameReduplication === false" class="auth-password">
           <img @mouseup="passwordShowTogle" class="password-show" v-if="passwordShow" src="@/assets/eye.png" alt="">
@@ -16,25 +16,25 @@
         </div>
         <!-- 비밀번호1 검증 안내 -->
         <div v-if="password1 && usernameReduplication === false" class="check-word">
-          <div v-if="checkPasswordData.common === 'fail'" id="info-red">✗ 일반적인 비밀번호가 아니어야 합니다.</div>
-          <div v-else id="info-green">✓ 일반적인 비밀번호가 아닙니다.</div>
-          <div v-if="checkPasswordData.similarity === 'fail'" id="info-red">✗ Username과 유사하지 않아야 합니다.</div>
-          <div v-else id="info-green">✓ Username과 유사하지 않습니다.</div>
-          <div v-if="checkPasswordData.min_length === 'fail'" id="info-red">✗ 8글자 이상이어야 합니다.</div>
-          <div v-else id="info-green">✓ 8글자 이상입니다.</div>
-          <div v-if="checkPasswordData.symbols === 'fail'" id="info-red">✗ 영문, 숫자, 특수문자가 포함되어야 합니다.</div>
-          <div v-else id="info-green">✓ 영문, 숫자, 특수문자를 모두 포함합니다.</div>
+          <div v-if="checkPasswordData.common === 'fail'" class="info-red">✗ 일반적인 비밀번호가 아니어야 합니다.</div>
+          <div v-else class="info-green">✓ 일반적인 비밀번호가 아닙니다.</div>
+          <div v-if="checkPasswordData.similarity === 'fail'" class="info-red">✗ Username과 유사하지 않아야 합니다.</div>
+          <div v-else class="info-green">✓ Username과 유사하지 않습니다.</div>
+          <div v-if="checkPasswordData.min_length === 'fail'" class="info-red">✗ 8글자 이상이어야 합니다.</div>
+          <div v-else class="info-green">✓ 8글자 이상입니다.</div>
+          <div v-if="checkPasswordData.symbols === 'fail'" class="info-red">✗ 영문, 숫자, 특수문자가 포함되어야 합니다.</div>
+          <div v-else class="info-green">✓ 영문, 숫자, 특수문자를 모두 포함합니다.</div>
         </div>
         <!-- 위 1차 검증을 모두 통과해야 2번째 비밀번호 입력 창 띄우기 -->
-        <div v-if="allPass && usernameReduplication === false" class="auth-password">
+        <div v-show="allPass && usernameReduplication === false" class="auth-password">
           <img @mouseup="passwordShowTogle" class="password-show" v-if="passwordShow" src="@/assets/eye.png" alt="">
           <img @mousedown="passwordShowTogle" class="password-show" v-else src="@/assets/hidden.png" alt="">
           <input @keyup.enter="signUp" @keyup="checkSame" class="auth-form-input" placeholder="Password confirm" type="password" id="password2"  v-model="password2">
         </div>
         <!-- 비밀번호2 동일한지 안내 -->
         <div v-if="password2 && isPasswordSame !== null && usernameReduplication === false" class="check-word">
-          <div v-if=" isPasswordSame" id="info-green">✓ 비밀번호가 동일합니다.</div>
-          <div v-else id="info-red">✗ 비밀번호가 같지 않습니다.</div>
+          <div v-if=" isPasswordSame" class="info-green">✓ 비밀번호가 동일합니다.</div>
+          <div v-else class="info-red">✗ 비밀번호가 같지 않습니다.</div>
         </div>
         <div v-if="allPass && isPasswordSame && usernameReduplication === false" @click="signUp" class="auth-form-submit">Press Enter</div>
         <div @click="moveToLogin" class="auth-form-move">이미 회원이신가요?</div>

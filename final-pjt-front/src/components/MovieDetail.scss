@@ -67,6 +67,7 @@
 
 // 배경이미지
 #backdrop {
+  z-index: -99;
   position :absolute;
   top: 0px;
   width: 100%;

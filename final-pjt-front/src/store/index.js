@@ -178,6 +178,7 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    
     logIn(context, payload) {
       const username = payload.username
       const password = payload.password
@@ -249,6 +250,7 @@ export default new Vuex.Store({
         })
       }
     },
+    
   ////////////////// 박스오피스 데이터 불러오기 ///////////////////
       
     getBoxoffice(context) {
