@@ -10,8 +10,9 @@
 
 <br>
 
-<center>ARGOS는 그리스 로마 신화에 등장하는 100개의 눈이 달린 감시자입니다.
-<br>우리의 아르고스는 사용자에게 알맞는 영화를 정확히 찾아내는 멋진 눈을 가진 친구입니다.</center>
+>ARGOS는 그리스 로마 신화에 등장하는 100개의 눈이 달린 감시자입니다.
+>
+>우리의 아르고스는 사용자에게 알맞는 영화를 정확히 찾아내는 눈을 가진 멋진 친구입니다.
 
 
 ---
@@ -19,15 +20,25 @@
 
 ## 📚 목차
 
-1. [개요](##-🌟-개요)
+1. [개요](##🌟-개요)
 
-2. [팀](##-🧑🏻‍🤝‍🧑🏻-팀)
+2. [팀](##🧑🏻‍🤝‍🧑🏻-팀)
    
-3. [서비스 소개](##-📽️-서비스-소개)
+3. [서비스 소개](##📽️-서비스-소개)
+  
+    1. [서비스 기획 목표](###서비스-기획-목표)
    
-4. [설치 및 실행](##-🚀-설치-및-실행)
+    2. [ERD](##ERD)
    
-5. [오픈소스 출처](##-📃-오픈소스-출처)
+    3. [WireFrame](##WireFrame)
+
+    4. [영화 추천 알고리즘](##영화-추천-알고리즘)
+
+    5. [구현 기능](##구현-기능)
+   
+4. [설치 및 실행](##🚀-설치-및-실행)
+   
+5. [오픈소스 출처](##📃-오픈소스-출처)
 
 ---
 
@@ -43,17 +54,31 @@
 
 ### 기술 스택 👨‍💻 
 
-- #### frontend
+- #### Language
   
-  ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
   
 
-- #### backend
+- #### Frameworks
   
-  ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+  ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
 
 
-- #### Editors
+- #### Library
+  
+  ![Axios](https://img.shields.io/badge/Axios-v1.1.3-white)
+  ![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.2.2-white)
+  ![Cheerio](https://img.shields.io/badge/Cheerio-v1.0.0_rc.12-white)
+  ![D3](https://img.shields.io/badge/D3-v7-white)
+  ![sass](https://img.shields.io/badge/SASS-v1.56.1-white)
+  ![swiper](https://img.shields.io/badge/swiper-v5.3.7-white)
+  ![VueRouter](https://img.shields.io/badge/Router-v3.5.1-white)
+  ![VueWordcloud](https://img.shields.io/badge/VueWordcloud-v1.1.1-white)
+  ![Vuex](https://img.shields.io/badge/Vuex-v3.6.2-white)
+
+
+
+- #### Editor
 
   ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
@@ -77,15 +102,33 @@
 
 ## 📽️ 서비스 소개
   
-### 기획 의도
+### 서비스 기획 목표
 
 **ARGOS**는 사용자의 별점 평가 척도에 기반하여, 유저가 선호하는 영화의 장르, 배우, 감독, 키워드 별 추천 영화를 유저에게 맞춤 제공하는 서비스입니다.
 
-맞춤 영화 추천 외에도 영화 리뷰 기반 커뮤니티, 영화티켓 예매, 무료 영화 감상, 영화 관련 뉴스 피드 서비스를 제공하여 통합된 사용자 경험을 제공합니다.
+맞춤 영화 추천 외에도
+
+- 영화 리뷰를 기반으로 한 유저 커뮤니티
+
+- 영화티켓 예매, 무료 영화 감상
+
+- 영화 관련 뉴스 피드 서비스 등...
+
+다양한 부가 서비스를 한 웹사이트에서 제공하여 통합된 사용자 경험을 제공합니다.
+
+ARGOS의 웹사이트 디자인은 Figma Wireframe 툴을 이용하여 철저하게 계획되며, 이미지, 버튼, 카드로 요소를 구분하여 사이트 전체적으로 통일된 동작을 수행할 수 있도록 짜임새있는 UI를 가집니다.
+
+
 
 ### ERD
 
 ![loading-ag-860](README_assets/17445e000bc7a36639dbb85e72242a648f8489c3.png)
+
+ARGOS의 데이터베이스 모델링은 크게 유저와 영화 정보로 구분됩니다.
+
+- 유저는 영화와 score 정보를 가진 N:M 관계로 연결되며, 각 유저와도 팔로잉/팔로워 관계를 위해 N:M 관계로 연결됩니다.
+
+- 영화는 각 장르, 배우, 감독, 키워드, 예고편 영상 주소, 공급사(OTT서비스)의 6가지 요소와 N:M 관계를 가집니다.
 
 ### WireFrame
 
@@ -93,8 +136,49 @@
 
 ![loading-ag-860](README_assets/wireframe.png)
 
+ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를 통해 통일감있고 잘 짜여진 사용자 경험을 제공합니다.
+
+
+### 영화 추천 알고리즘
+
+어떻게 짰는지
 
 ### 구현 기능
+
+- #### 디자인 철학
+
+  - 모든 컴포넌트에서 동일한 요소에 동일한 컬러를 사용하여 디자인 일치감을 만들어줍니다.
+
+  - 모든 버튼 요소들은 가로로 길쭉한 타원형을 갖고 있으며, 마우스오버시 흰색 테두리가 생성되어 다른 링크로 연결이 될 것을 암시합니다.
+
+  - 모든 카드 요소들은 20px의 모서리 곡선값을 가진 직사각형으로 이루어져있으며, 동일한 그림자를 갖고있습니다. 마우스오버시 동일한 비율로 스케일이 커지며 다른 링크로 연결이 될 것을 암시합니다.
+
+  - 모든 모달은 반투명의 배경을 갖고 있으며, 정보가 넘칠 경우 내부에 스크롤박스를 두어 배경과 모달이 분리되어 작동됩니다.
+
+  - 페이지 내에서 동영상 재생시 배경이 어두워지며 동영상에만 집중할 수 있도록 합니다.
+
+  - 영화에 대한 모든 평가는 별점으로 매겨집니다. 1점부터 5점까지 채워지는 별을 시각적으로 보여줍니다.
+
+  - 내가 작성한 댓글, 코멘트와 상대방이 작성한 댓글, 코멘트는 완전히 시각적으로 구분됩니다. 수정, 삭제시에도 다른 링크로 연결되지 않고 그 즉시 직관적으로 작동됩니다.
+
+  - '추천영화', '영화 별점 매기기', '뉴스' 페이지는 무한 스크롤 기능을 제공하며, 로딩중이라는 것을 알 수 있도록 로더가 표시됩니다. 로더는 로딩되는 콘텐츠의 모양과 완전히 동일합니다.
+
+- #### 유저 인증
+
+- #### 맞춤형 영화 추천
+
+- #### 개인 영화취향 분석
+
+- #### 커뮤니티 (CRUD)
+
+- #### 주변 영화관 시간표
+
+- #### 무료 영화관
+
+- #### 영화 뉴스 모아보기
+
+- #### 404 Page
+
 
 ---
 
@@ -141,15 +225,6 @@ $ npm run serve
 ---
 
 ## 📃 오픈소스 출처
-
-#### Library
-
-  ![Vuex](https://img.shields.io/badge/Vuex-v22.0.4-white)
-  ![Router](https://img.shields.io/badge/Router-v22.0.4-white)
-  ![Axios](https://img.shields.io/badge/Axios-v22.0.4-white)
-  ![Cheerio](https://img.shields.io/badge/Cheerio-v22.0.4-white)
-  ![Vue-Wordcloud](https://img.shields.io/badge/VueWordcloud-v22.0.4-white)
-  ![D3](https://img.shields.io/badge/D3-v22.0.4-white)
 
 #### API
 
