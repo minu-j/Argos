@@ -1,52 +1,170 @@
 ![](README_assets/2022-11-20-23-26-07-image.png)
 
-### 영화를 찾는 눈.
+![logo](README_assets/logo.gif)
 
-## 소개
+<center><h1>ARGOS</h1></center> 
 
-```textile
-아르고스는 그리스 로마 신화에서 100개의 눈이 달린 헤라 심복으로 소개됩니다. 헤라에게
-아르고스의 눈은 다른 사람을 감시하는 눈이였지만, 저희에게 아르고스는 함께 영화를 보고,
-사용자가 원하는 영화를 찾아주는 멋진 눈을 가진 친구입니다.
-```
+<center><strong>"영화를 찾는 눈"<strong></center> 
 
-## 프로젝트 기간
+<center>SSAFY 8th Final Team Project</center> 
 
-- 2022.11.16 ~ 2022.11.24 (총 8일)
+<br>
 
-### 기술 스택
+<center>ARGOS는 그리스 로마 신화에 등장하는 100개의 눈이 달린 감시자입니다.
+<br>우리의 아르고스는 사용자에게 알맞는 영화를 정확히 찾아내는 멋진 눈을 가진 친구입니다.</center>
 
-- ### backend
+
+---
+
+
+## 📚 목차
+
+1. [개요](##-🌟-개요)
+
+2. [팀](##-🧑🏻‍🤝‍🧑🏻-팀)
+   
+3. [서비스 소개](##-📽️-서비스-소개)
+   
+4. [설치 및 실행](##-🚀-설치-및-실행)
+   
+5. [오픈소스 출처](##-📃-오픈소스-출처)
+
+---
+
+## 🌟 개요
+
+### 프로젝트 기간
+
+2022.11.16 ~ 2022.11.24 (8일)
+
+### 버전
+
+  ![node.js](https://img.shields.io/badge/node.js-v16.17.1-brightgreen) ![npm](https://img.shields.io/badge/npm-v9.1.1-green) ![pip](https://img.shields.io/badge/pip-v22.0.4-blue)
+
+### 기술 스택 👨‍💻 
+
+- #### frontend
   
-  - 뭐 사용했는 지
-
-- ### frontend
+  ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
   
-  - 뭐 사용했는 지
 
-## 아르고스의 핵심 기능 들 사진이나 영상
+- #### backend
+  
+  ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
-```
 
-```
+- #### Editors
 
-## 
+  ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-## 팀원 소개
 
-| 정민우(조장)      | 김성훈          |
-|:------------:|:------------:|
-| 사진같은거 있음 넣기  | 사진같은거 있음 넣기  |
-| 뭐했는지 간단하게 적기 | 뭐했는지 간단하게 적기 |
-|              |              |
+- #### Version Control
 
-## ERD
+  ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+  
+- #### Publishing
+
+  Comming soon...
+
+## 🧑🏻‍🤝‍🧑🏻 팀
+
+|       |  Github  |  역할  |
+|:------------:|:------------:|:------------:|
+| **정민우** (조장)  |  [minu-j](https://github.com/minu-j/)  |  총괄, Frontend  |
+| **김성훈** |  [kimseonghun96](https://github.com/kimseonghun96/)  |  Backend  |
+
+---
+
+## 📽️ 서비스 소개
+  
+### 기획 의도
+
+**ARGOS**는 사용자의 별점 평가 척도에 기반하여, 유저가 선호하는 영화의 장르, 배우, 감독, 키워드 별 추천 영화를 유저에게 맞춤 제공하는 서비스입니다.
+
+맞춤 영화 추천 외에도 영화 리뷰 기반 커뮤니티, 영화티켓 예매, 무료 영화 감상, 영화 관련 뉴스 피드 서비스를 제공하여 통합된 사용자 경험을 제공합니다.
+
+### ERD
 
 ![loading-ag-860](README_assets/17445e000bc7a36639dbb85e72242a648f8489c3.png)
 
-## 
+### WireFrame
 
-## 서비스 기능(되도록 상세하게)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+
+![loading-ag-860](README_assets/wireframe.png)
+
+
+### 구현 기능
+
+---
+
+## 🚀 설치 및 실행
+
+1. Git Clone
+
+```shell
+$ git clone https://github.com/minu-j/Argos.git
+```
+
+2. Run Back-server
+```shell
+ ~/.../Argos/
+
+$ cd final-pjt-back
+
+$ python -m venv venv
+$ source venv/Scripts/activate
+
+$ python manage.py makemigrations
+$ python manage.py migrate
+
+$ python manage.py loaddata db_1.json
+$ python manage.py loaddata db_2.json
+$ python manage.py loaddata db_3.json
+
+$ python manage.py runserver
+```
+
+3. Run Front-Server
+```shell
+ ~/.../Argos/
+
+$ cd final-pjt-front/
+
+$ npm install
+
+$ npm run serve
+```
+
+4. Done!
+
+---
+
+## 📃 오픈소스 출처
+
+#### Library
+
+  ![Vuex](https://img.shields.io/badge/Vuex-v22.0.4-white)
+  ![Router](https://img.shields.io/badge/Router-v22.0.4-white)
+  ![Axios](https://img.shields.io/badge/Axios-v22.0.4-white)
+  ![Cheerio](https://img.shields.io/badge/Cheerio-v22.0.4-white)
+  ![Vue-Wordcloud](https://img.shields.io/badge/VueWordcloud-v22.0.4-white)
+  ![D3](https://img.shields.io/badge/D3-v22.0.4-white)
+
+#### API
+
+  [TMDB]() - 영화 정보 검색
+
+  [KOBIS]() - KOFIC 영화관 입장권 통합 전산망
+
+  [KakaoMap]() - 카카오맵
+
+#### etc...
+
+[flaticon](https://www.flaticon.com/) - 아이콘
+
+
+---
 
 |     | 기능                    | 기능설명                                                                                          |
 | --- | --------------------- | --------------------------------------------------------------------------------------------- |
