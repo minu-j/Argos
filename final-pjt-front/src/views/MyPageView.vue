@@ -6,6 +6,7 @@
       <my-page-analysis @rated-movies="ratedMovies" class="mypage-analysis"/>
       <my-page-rating :rated-movie-data=ratedMovieData class="mypage-rating"/>
       <my-page-review/>
+      <sign-out/>
     </div>
   </div>
 </template>
@@ -16,8 +17,11 @@ import MyPageRating from '../components/MyPageRating.vue'
 import MyPageReview from '../components/MyPageReview.vue'
 import UserFollow from '../components/UserFollow.vue'
 
+//회원 탈퇴
+import SignOut from '../components/SignOut.vue'
+
 export default {
-  components: { MyPageAnalysis, MyPageRating, MyPageReview, UserFollow },
+  components: { MyPageAnalysis, MyPageRating, MyPageReview, UserFollow, SignOut},
   name: 'MyPageView',
   computed: {
     userInfo() {
