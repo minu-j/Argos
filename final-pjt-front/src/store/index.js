@@ -28,7 +28,7 @@ export default new Vuex.Store({
     createPersistedState()
   ],
   state: {
-    API_URL: 'https://argos-movie.herokuapp.com',
+    API_URL: 'http://127.0.0.1:8000/',
     userLocation: { // 사용자 위치정보
       latitude: null,
       longitude: null,

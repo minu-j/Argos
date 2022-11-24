@@ -13,6 +13,13 @@ SSAFY 8th Final Team Project
 
 ---
 
+### [💌 배포(beta)](https://argos-movie.netlify.app/) 
+
+v0.1 : 프론트/백 서버 배포 시작
+ - 영화 티켓스케줄, 뉴스보기 등 크롤링 기반 미작동
+
+---
+
 
 ## 📚 목차
 
@@ -57,6 +64,9 @@ SSAFY 8th Final Team Project
   ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
   
   ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)![sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+
+  #### 배포
+  ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
   #### IDE
 
@@ -446,7 +456,6 @@ $ cd final-pjt-back
 $ python -m venv venv
 $ source venv/Scripts/activate
 
-$ python manage.py makemigrations
 $ python manage.py migrate
 
 $ python manage.py loaddata db_1.json
