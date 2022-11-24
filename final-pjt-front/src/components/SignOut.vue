@@ -1,6 +1,6 @@
 <template>
   <!-- 회원 탈퇴하기 -->
-  <div class="out" @click="onSignout">회원 탈퇴하기</div>
+  <div class="out" @click="onSignout" v-if="isMypage">회원 탈퇴</div>
 </template>
 
 <script>
@@ -14,10 +14,21 @@ export default {
         this.signout()
     },
   },
+  computed: {
+    isMypage() {
+      const pageName = window.location.pathname.replaceAll('/mypage/', '')
+      const myName = this.$store.state.username
+      if (pageName === myName) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
 }
 
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  @import './SignOut.scss';
 </style>
