@@ -107,6 +107,7 @@ export default {
     })
       .then((res) =>{
         this.recommendMovieData = res.data.data
+        console.log(res.data.data)
       })
 
       // 영화 로딩 후 옵저버 설정

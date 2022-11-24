@@ -70,12 +70,6 @@ export default {
     this.width = box.clientWidth - 70
     this.height = box.clientHeight
 
-    // this.data.push(this.userRating["1"].length)
-    // this.data.push(this.userRating["2"].length)
-    // this.data.push(this.userRating["3"].length)
-    // this.data.push(this.userRating["4"].length)
-    // this.data.push(this.userRating["5"].length)
-
     let allMovieCount = 0
     let allMovieAcc = 0
     for (let i = 1; i < 6; i++) {
