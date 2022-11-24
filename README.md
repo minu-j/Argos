@@ -35,6 +35,8 @@ SSAFY 8th Final Team Project
 4. [설치 및 실행](#-설치-및-실행)
    
 5. [오픈소스 출처](#-오픈소스-출처)
+   
+6. [느낀점](#-느낀점)
 
 ---
 
@@ -307,6 +309,7 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
                   if any(sym in password1 for sym in '123456789'):
                       response_data['symbols'] = 'pass'
           ```
+
   ![login-logout](README_assets/login-logout.gif)
 
   - ✔️  로그인/비로그인 상태 구분하여 출력 컨텐츠를 제한합니다. 메인화면에서 개인 추천 영화목록은 로그인을 하기 전까지 출력되지 않습니다.
@@ -348,6 +351,9 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
   - ✔️ 사용자가 재밌게 본 영화의 키워드를 defultdict로 카운트하여 WordCloud 형태로 데이터를 시각화합니다.
 
   - ✔️ 사용자가 재밌게 본 영화에 출연한 감독, 배우, 장르의 데이터를 분석하여 높은 비중을 차지하는 데이터 상위 3개를 출력합니다.
+
+
+  - ✔️ 사용자가 평가한 영화를 별점 척도별로 정리하여 그래프로 별점 분포를 시각화합니다.
 
 
 - #### 영화 디테일 페이지
@@ -465,45 +471,8 @@ $ npm run serve
 
 [flaticon](https://www.flaticon.com/) - 아이콘
 
+---
 
-
-### 홈 화면 각종 반응형 모음집 1탄 ㅎ
-
-![홈 화면 각종 반응형 모음집 1탄.gif](README_assets/72640e8e76f471980e3e6a8565755c06634a7a4e.gif)
-
-### 박스오피스
-
-![박스오피스_gif.gif](README_assets/cb4a6dd644f51f39528d7c365b6ed77e1ef65f45.gif)
-
-### 회원가입
-
-![회원 가입부터 영화 평가까지.gif](README_assets/64e0372ad006cf179cb7d12133ef4bdcd8b4bfcc.gif)
-
-### 영화 상세페이지 리뷰 전까지
-
-![영화 상세페이지 리뷰 전까지.gif](README_assets/28dfc65d8bc4833f85bb159755ab4ea3a1cb570a.gif)
-
-### 리뷰 작성
-
-![영화 상세페이지 리뷰_gif (2).gif](README_assets/041df7aec1037e97c6c3a84d0c54eafed9db904e.gif)
-
-### 영화관 시간표 조회 및 예매 링크 연결
-
-![지도와 티켓.gif](README_assets/23fdb4a9d64a02377d3954fb64d4e55ad6a47446.gif)
-
-### 영화 관련 기사 모음
-
-![영화 기사 관련.gif](README_assets/67cb623099dc569dfec3c9567bdb5ec8f3afb763.gif)
-
-### 
-
-### 검색기능
-
-![검색기능.gif](README_assets/8426dc3e068f9591afadcc8f90eda05eb242acb3.gif)
-
-### 404page
-
-- ## 
 
 ## 느낀점
 
