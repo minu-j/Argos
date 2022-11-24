@@ -83,7 +83,7 @@ export default {
     getDetailModal(category, data) {
       console.log(category, data)
 
-      const API_URL = 'http://127.0.0.1:8000'
+      const API_URL = this.$store.state.API_URL
       const Token = this.$store.state.token
       console.log(`Token ${Token}`)
       axios({
@@ -112,7 +112,7 @@ export default {
     },
     getMovieData() {
       const movie_id = window.location.pathname.replaceAll('/movie/', '')
-      const API_URL = 'http://127.0.0.1:8000'
+      const API_URL = this.$store.state.API_URL
       const Token = this.$store.state.token
       console.log(`Token ${Token}`)
       axios({

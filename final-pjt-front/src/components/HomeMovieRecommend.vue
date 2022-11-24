@@ -75,7 +75,7 @@ export default {
     },
     getMovieData() {
       const user_id = this.$store.state.userId
-      const API_URL = 'http://127.0.0.1:8000'
+      const API_URL = this.$store.state.API_URL
       const Token = this.$store.state.token
       axios({
         method: 'GET',
@@ -96,7 +96,7 @@ export default {
   },
   mounted() {
     const user_id = this.$store.state.userId
-    const API_URL = 'http://127.0.0.1:8000'
+    const API_URL = this.$store.state.API_URL
     const Token = this.$store.state.token
     axios({
       method: 'GET',

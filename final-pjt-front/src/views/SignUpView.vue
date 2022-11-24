@@ -119,7 +119,7 @@ export default {
     // 실시간 비밀번호 검증
     checkPassword() {
       this.checkSame()
-      const API_URL = 'http://127.0.0.1:8000'
+      const API_URL = this.$store.state.API_URL
       axios({
         method: 'post',
         url: `${API_URL}/accounts/passwordprecheck/`,
@@ -152,7 +152,7 @@ export default {
       
       // 이후 username 사용 가능 검증
       if (usernameInput.value) {
-        const API_URL = 'http://127.0.0.1:8000'
+        const API_URL = this.$store.state.API_URL
         axios({
           method: 'get',
           url: `${API_URL}/accounts/usernameprecheck/${usernameInput.value}/`,

@@ -40,7 +40,7 @@ import MovieLoaderCard from './MovieLoaderCard.vue'
     },
     methods: {
       getNextMovie() {
-        const API_URL = 'http://127.0.0.1:8000'
+        const API_URL = this.$store.state.API_URL
         const Token = this.$store.state.token
         axios({
           method: 'GET',
@@ -64,7 +64,7 @@ import MovieLoaderCard from './MovieLoaderCard.vue'
       }
     },
     mounted() {
-      const API_URL = 'http://127.0.0.1:8000'
+      const API_URL = this.$store.state.API_URL
       const Token = this.$store.state.token
       axios({
         method: 'GET',

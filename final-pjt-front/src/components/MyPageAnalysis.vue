@@ -92,7 +92,7 @@ export default {
     // 유저의 영화취향 불러오기
     this.userName = window.location.pathname.replaceAll('/mypage/', '')
     const myName = this.$store.state.username
-    const API_URL = 'http://127.0.0.1:8000'
+    const API_URL = this.$store.state.API_URL
     const Token = this.$store.state.token
     axios({
       method: 'GET',

@@ -32,7 +32,7 @@ export default {
   methods: {
     createRating(n) {  // 별 클릭시 별점 등록
       const movie_id = this.movieData.id
-      const API_URL = 'http://127.0.0.1:8000'
+      const API_URL = this.$store.state.API_URL
       const Token = this.$store.state.token
       console.log(n)
       axios({
@@ -88,7 +88,7 @@ export default {
       })
     },
     clearRating() {  // 이미 스코어가 있는 상태에서 별을 누르면 별점 취소하기
-      const API_URL = 'http://127.0.0.1:8000'
+      const API_URL = this.$store.state.API_URL
       const rating_id = this.scoreId
       console.log(rating_id)
       this.score = []
@@ -106,7 +106,7 @@ export default {
     }
   },
   mounted() {
-    const API_URL = 'http://127.0.0.1:8000'
+    const API_URL = this.$store.state.API_URL
     const user_id = this.$store.state.userId
     const movie_id = this.movieData.id
     axios({
@@ -126,8 +126,6 @@ export default {
 </script>
 
 <style scoped>
-.star {
-}
 .star:hover {
   cursor: pointer;
 }
