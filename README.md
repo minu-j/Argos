@@ -1,14 +1,10 @@
-![](README_assets/2022-11-20-23-26-07-image.png)
-
 ![logo](README_assets/logo.gif)
 
-<center><h1>ARGOS</h1></center> 
+# ARGOS
 
-<center><strong>"영화를 찾는 눈"<strong></center> 
+"영화를 찾는 눈"
 
-<center>SSAFY 8th Final Team Project</center> 
-
-<br>
+SSAFY 8th Final Team Project
 
 >ARGOS는 그리스 로마 신화에 등장하는 100개의 눈이 달린 감시자입니다.
 >
@@ -54,42 +50,30 @@
 
 ### 기술 스택 👨‍💻 
 
-- #### Language
-  
-  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-  
-
-- #### Frameworks
+  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
   
   ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
-
-
-- #### Library
   
+  ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)![sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+
+  #### IDE
+
+  ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+  
+  #### 라이브러리
+
   ![Axios](https://img.shields.io/badge/Axios-v1.1.3-white)
-  ![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.2.2-white)
   ![Cheerio](https://img.shields.io/badge/Cheerio-v1.0.0_rc.12-white)
   ![D3](https://img.shields.io/badge/D3-v7-white)
-  ![sass](https://img.shields.io/badge/SASS-v1.56.1-white)
   ![swiper](https://img.shields.io/badge/swiper-v5.3.7-white)
   ![VueRouter](https://img.shields.io/badge/Router-v3.5.1-white)
   ![VueWordcloud](https://img.shields.io/badge/VueWordcloud-v1.1.1-white)
   ![Vuex](https://img.shields.io/badge/Vuex-v3.6.2-white)
 
+  #### 버전관리
 
-
-- #### Editor
-
-  ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-
-
-- #### Version Control
-
-  ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
-  
-- #### Publishing
-
-  Comming soon...
+  ![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+  ![GitLab](https://img.shields.io/badge/GitLab-330F63?style=for-the-badge&logo=gitlab&logoColor=white)
 
 ## 🧑🏻‍🤝‍🧑🏻 팀
 
@@ -121,7 +105,7 @@ ARGOS의 웹사이트 디자인은 Figma Wireframe 툴을 이용하여 철저하
 
 ### ERD
 
-![loading-ag-860](README_assets/17445e000bc7a36639dbb85e72242a648f8489c3.png)
+![ERD](README_assets/ERD.png)
 
 ARGOS의 데이터베이스 모델링은 크게 유저와 영화 정보로 구분됩니다.
 
@@ -133,12 +117,18 @@ ARGOS의 데이터베이스 모델링은 크게 유저와 영화 정보로 구�
 
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-![loading-ag-860](README_assets/wireframe.png)
+![wireframe](README_assets/wireframe.png)
 
 ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를 통해 통일감있고 잘 짜여진 사용자 경험을 제공합니다.
 
 
+### Components Map
+
+![components-map](README_assets/components-map.png)
+
 ### 영화 추천 알고리즘
+
+![recommend](README_assets/recommend.png)
 
 - ARGOS의 모든 영화평가는 1점에서 5점 사이의 척도를 가진 별점으로 평가됩니다. 
 
@@ -256,11 +246,11 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
 >
 > ❌ : 구현 실패
 
-- #### ✔️  ARGOS의 디자인 철학
+- #### ARGOS의 디자인 철학
 
   - ✔️  모든 컴포넌트에서 동일한 요소에 동일한 컬러를 사용하여 디자인 일치감을 만들어줍니다.
 
-  - ✔️  모든 버튼 요소들은 가로로 길쭉한 타원형을 갖고 있으며, 마우스오버시 흰색 테두리가 생성되어 다른 링크로 연결이 될 것을 암시합니다.
+  - ✔️  모든 버튼 요소들은 가로로 긴 타원형을 갖고 있으며, 마우스오버시 흰색 테두리가 생성되어 다른 링크로 연결이 될 것을 암시합니다.
 
   - ✔️  모든 카드 요소들은 20px의 모서리 곡선값을 가진 직사각형으로 이루어져있으며, 동일한 그림자를 갖고있습니다. 마우스오버시 동일한 비율로 스케일이 커지며 다른 링크로 연결이 될 것을 암시합니다.
 
@@ -274,11 +264,15 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
 
   - ✔️  '추천영화', '영화 별점 매기기', '뉴스' 페이지는 무한 스크롤 기능을 제공하며, 로딩중이라는 것을 알 수 있도록 로더가 표시됩니다. 로더는 로딩되는 콘텐츠의 모양과 완전히 동일합니다.
 
-  - ✔️  모든 페이지는 반응형입니다!
+  ![responsive](README_assets/responsive.gif)
 
-- #### ❔ 유저 인증
+  - ✔️  모든 페이지는 완벽하게 반응형입니다! 모든 가로화면 비율에 대응합니다.
+
+- #### 유저 인증
 
   - ✔️  회원가입 / 로그인
+
+  ![signup](README_assets/signup.gif)
 
   - ✔️  회원가입시, 사용자의 입력값에 따라 장고 서버와 실시간으로 통신하여, 해당 username과 password 입력값이 유효한지 판단합니다.
 
@@ -313,15 +307,25 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
                   if any(sym in password1 for sym in '123456789'):
                       response_data['symbols'] = 'pass'
           ```
-
+  ![login-logout](README_assets/login-logout.gif)
 
   - ✔️  로그인/비로그인 상태 구분하여 출력 컨텐츠를 제한합니다. 메인화면에서 개인 추천 영화목록은 로그인을 하기 전까지 출력되지 않습니다.
 
   - ✔️  로그아웃
 
-  - ❔ 유저 인증에 따른 REST API 요청 제한에 시간을 들이지 못해 view 기능별 유저의 인증정보에 따른 제한이 철저하지 못합니다.
+  - ❔ 유저 인증에 따른 REST API 요청 제한에 시간을 들이지 못해 view 기능별 유저의 인증정보에 따른 제한이 완벽하지는 못합니다.
 
-- #### ✔️ 영화 검색
+- #### 박스오피스 순위 출력
+
+  ![boxoffice](README_assets/boxoffice.gif)
+
+  - ✔️  KOBIS API 활용하여 메인화면에 어제 기준 박스오피스 순위, 변동사항, 예매 점유율 출력
+
+  - ✔️  API가 제한적이어서 각 영화의 Backdrop 이미지를 불러올 수 없어, TMDB API의 movie search를 통해 해당 영화의 제목, 개봉년도를 검색하여 이미지 추가 요청 후 박스오피스 데이터와 매칭
+
+- #### 영화 검색
+
+  ![search](README_assets/search.gif)
 
   - ✔️  TMDB API 활용하여 키워드 검색에 따른 영화 리스트 출력
 
@@ -329,11 +333,15 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
 
   - ✔️  입력에 따른 자동검색 기능을 구현하되, API의 과도한 요청을 제한하기 위해 1초에 한번씩만 검색이 되게 제작했습니다.
 
-- #### ✔️ 맞춤형 영화 추천
+- #### 맞춤형 영화 추천
 
-  - 영화 추천 알고리즘 구현 
+  - 영화 추천 알고리즘 구현(상술)
 
-- #### ✔️ 개인 영화취향 분석(마이페이지 내)
+  - 홈 추천영화 카드 스와이퍼에 마우스 오버시 예고편 미리보기 재생
+
+- #### 개인 영화취향 분석(마이페이지 내)
+
+  ![mypage](README_assets/mypage.gif)
 
   - ✔️ 맞춤형 영화 추천 기능과 동일하게 4점 이상의 영화를 기준으로, 사용자가 높게 평가한 영화의 목록을 추출하고, 해당 목록의 정보를 분석합니다.
 
@@ -342,7 +350,9 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
   - ✔️ 사용자가 재밌게 본 영화에 출연한 감독, 배우, 장르의 데이터를 분석하여 높은 비중을 차지하는 데이터 상위 3개를 출력합니다.
 
 
-- #### ✔️ 영화 디테일 페이지
+- #### 영화 디테일 페이지
+
+  ![movie-detail](README_assets/movie-detail.gif)
 
   - ✔️ 영화의 디테일 페이지에 접속하면 배우, 감독 등 영화의 정보와 유저가 해당 영화에 준 별점, 리뷰와 코멘트를 볼 수 있습니다.
  
@@ -352,15 +362,21 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
 
   - ✔️ 해당 영화를 볼 수 있는 OTT서비스를 출력하고, 클릭하면 해당 사이트로 이동합니다.
 
-- #### ✔️ 커뮤니티 (CRUD & Follow)
+- #### 커뮤니티 (CRUD & Follow)
+
+  ![review-comment](README_assets/review-comment.gif)
 
   - ✔️ 영화별 리뷰 작성, 조회, 수정, 삭제를 구현했으며, 해당 영화의 디테일 페이지 최하단에 카드 형태로 별점과 함께 출력됩니다.
 
   - ✔️ 리뷰별 코멘트 작성, 조회, 삭제를 구현했으며, 해당 리뷰 카드 하단에 채팅 형태로 출력됩니다. 내가 쓴 코멘트는 따로 우측 정렬되어 파란색 배경의 메시지로 표시됩니다.
 
+  ![following](README_assets/following.gif)
+
   - ✔️ 유저간 팔로우 기능과 팔로잉/팔로워 목록을 마이페이지에 표시합니다.
 
-- #### ✔️ 주변 영화관 시간표
+- #### 주변 영화관 시간표
+
+  ![ticket](README_assets/ticket.gif)
 
   - ✔️ 사용자의 현재 위치정보를 요청하여 위도/경도 값을 파악합니다.
   
@@ -372,15 +388,21 @@ ARGOS는 미리 UI/UX를 정교하게 설계하여 일치된 디자인 요소를
 
   - ❔ 크롤링 데이터의 한계로 오늘날짜 외 다른 날짜의 시간표는 조회하지 못합니다.
 
-- #### ✔️ 무료 영화관
+- #### 무료 영화관
+
+  ![play](README_assets/play.gif)
 
   - ✔️ 유튜브에 여러 채널에 분산되어 업로드되어있는 고전/독립영화를 한 페이지에 모아볼 수 있도록 출력합니다. 해당 데이터는 관리자가 선정합니다.
 
-- #### ✔️ 영화 기사를 모아보기
+- #### 영화 기사 모아보기
 
-  - ✔️ 영화 기사를 웹크롤링하여 카드 형태로 표시합니다. 클릭하면 해당 기사 페이지로 이동합니다.
+  ![news](README_assets/news.gif)
 
-- #### ✔️ 404 Page
+  - ✔️ 영화 주제의 기사를 웹크롤링하여 카드 형태로 표시합니다. 클릭하면 해당 기사 페이지로 이동합니다.
+
+- #### 404 Page
+
+  ![not-found-404](README_assets/not-found-404.gif)
 
   - ✔️ 데이터베이스의 없는 영화 디테일 페이지나, 존재하지 않는 주소로 이동을 시도하면 404페이지를 출력합니다.
 
