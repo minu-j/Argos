@@ -3,16 +3,14 @@
     <div class="follow-people">
       <div class="follow-people-box">
         <div class="follow-people-box-title">팔로워</div>
-        <div v-if="followData.follower_count" class="follow-people-box-count">{{ followData.follower_count }}명</div>
-        <div v-else class="follow-people-box-count">없음</div>
+        <div class="follow-people-box-count">{{ followData.follower_count }}명</div>
         <div class="follow-people-box-list">
           <span class="follow-people-box-list-item" @click="goProfile(follower.username)" v-for="(follower, index) in followData.followers" :key="`follower-${index}`">{{follower.username}}</span>
         </div>
       </div>
       <div class="follow-people-box">
         <div class="follow-people-box-title">팔로잉</div>
-        <div v-if="followData.following_count" class="follow-people-box-count">{{ followData.following_count }}명</div>
-        <div v-else class="follow-people-box-count">없음</div>
+        <div class="follow-people-box-count">{{ followData.following_count }}명</div>
         <div class="follow-people-box-list">
           <span class="follow-people-box-list-item" @click="goProfile(following.username)" v-for="(following, index) in followData.followings" :key="`follower-${index}`">{{following.username}}</span>
         </div>

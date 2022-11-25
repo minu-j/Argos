@@ -22,13 +22,14 @@ Vue.use(Vuex)
 //  }
 // }
 
+const API_URL = 'http://127.0.0.1:8000'
+
 export default new Vuex.Store({
   // 토큰 관리
   plugins: [
     createPersistedState()
   ],
   state: {
-    API_URL: 'http://127.0.0.1:8000/',
     userLocation: { // 사용자 위치정보
       latitude: null,
       longitude: null,
@@ -132,7 +133,7 @@ export default new Vuex.Store({
 
       axios({
         method: 'post',
-        url: `${context.state.API_URL}/accounts/signup/`,
+        url: `${API_URL}/accounts/signup/`,
         data: {
           username, password1, password2
         }
@@ -146,7 +147,7 @@ export default new Vuex.Store({
 
           axios({
             method: 'get',
-            url: `${context.state.API_URL}/accounts/user/`,
+            url: `${API_URL}/accounts/user/`,
             headers: {
               Authorization: `Token ${payload.token}`
             }
@@ -184,7 +185,7 @@ export default new Vuex.Store({
 
       axios({
         method: 'post',
-        url: `${context.state.API_URL}/accounts/login/`,
+        url: `${API_URL}/accounts/login/`,
         data: {
           username, password
         }
@@ -198,7 +199,7 @@ export default new Vuex.Store({
 
           axios({
             method: 'get',
-            url: `${context.state.API_URL}/accounts/user/`,
+            url: `${API_URL}/accounts/user/`,
             headers: {
               Authorization: `Token ${payload.token}`
             }
@@ -232,7 +233,7 @@ export default new Vuex.Store({
     signout(context,) {
       if (confirm('정말 탈퇴하시겠습니까?')){
         axios({
-          url: `${context.state.API_URL}/accounts/delete/`,
+          url: `${API_URL}/accounts/delete/`,
           method: 'post',
           headers: context.getters.authHeader,
         })
@@ -327,7 +328,6 @@ export default new Vuex.Store({
       } else {
         axios.get(newsUrl)
           .then((response) => {
-            console.log(response.data)
             const $ = cheerio.load(response.data)
             $('.list-type038 > .list > li > .item-box01').map((i, element) => {
               const news = {

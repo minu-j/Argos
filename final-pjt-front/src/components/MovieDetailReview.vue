@@ -109,7 +109,7 @@ export default {
       if (!this.userScore) {
         alert('먼저 이 영화를 평가해주세요')
       } else { // 별점 작성
-        const API_URL = this.$store.state.API_URL
+        const API_URL = 'http://127.0.0.1:8000'
         const movie_id = this.movieData.id
         const Token = this.$store.state.token
         const reviewTextarea = document.querySelector('#review-textarea')
@@ -142,7 +142,7 @@ export default {
 
     // 코멘트 생성
     createComment(id) {
-      const API_URL = this.$store.state.API_URL
+      const API_URL = 'http://127.0.0.1:8000'
       const Token = this.$store.state.token
       const commentData = document.querySelector(`#input-${id}`).value
       axios({
@@ -168,7 +168,7 @@ export default {
 
     // 코멘트 삭제
     deleteComment(id) {
-      const API_URL = this.$store.state.API_URL
+      const API_URL = 'http://127.0.0.1:8000'
       const Token = this.$store.state.token
       axios({
         method: 'delete',
@@ -203,7 +203,7 @@ export default {
     // 리뷰 수정
     editReview(id) {
       console.log(id)
-      const API_URL = this.$store.state.API_URL
+      const API_URL = 'http://127.0.0.1:8000'
       const Token = this.$store.state.token
       const reviewEditData = document.querySelector(`#review-edit-textarea-${id}`).value
       axios({
@@ -234,7 +234,7 @@ export default {
 
     // 리뷰 삭제
     deleteReview(id) {
-      const API_URL = this.$store.state.API_URL
+      const API_URL = 'http://127.0.0.1:8000'
       const Token = this.$store.state.token
       axios({
         method: 'delete',

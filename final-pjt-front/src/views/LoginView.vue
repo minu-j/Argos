@@ -22,6 +22,8 @@
 <script>
 import axios from 'axios'
 
+const API_URL = 'http://127.0.0.1:8000'
+
 export default {
   name: 'LogInView',
   data() {
@@ -36,7 +38,6 @@ export default {
     logIn() {
       const username = this.username
       const password = this.password
-      const API_URL = this.$store.state.API_URL
 
       axios({
         method: 'post',
