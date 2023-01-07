@@ -4,7 +4,7 @@
 
 "영화를 찾는 눈"
 
-SSAFY 8th Final Team Project
+SSAFY 8th Final Team Project 최우수상
 
 >ARGOS는 그리스 로마 신화에 등장하는 100개의 눈이 달린 감시자입니다.
 >
