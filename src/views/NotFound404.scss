@@ -1,0 +1,26 @@
+#not-found-404 {
+  text-align: center;
+  
+  &-text {
+    margin-top: 9vh;
+    font-family: 'Paytone One';
+    font-size: 8vw;
+    position: relative;
+  }
+
+  &-img {
+    margin: 3vh;
+    position: relative;
+    width: 40%;
+    max-width: 300px;
+  }
+}
+
+video {
+  z-index: -99;
+  min-height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  opacity: 0.5;
+}

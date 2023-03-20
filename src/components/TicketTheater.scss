@@ -1,0 +1,43 @@
+#theater {
+  display: flex;
+  justify-content: center;
+  
+  &-info {
+    width: 90%;
+    max-width: 900px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: rgb(53, 53, 53);
+    padding: 15px 30px 20px 30px;
+    box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+
+    &-title {
+      font-family: NanumSquareNeo-Variable;
+      font-size: 22pt;
+      font-weight: 700;
+      margin-right: 15px;
+    }
+    &-distance {
+      color: #afafaf;
+      font-weight: 700;
+    }
+  }
+}
+
+.theater-discription {
+  display:block;
+  color: rgb(168, 168, 168);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    color: white;
+  }
+}
+
+#notice {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: 700;
+  margin-block: 15px;
+}

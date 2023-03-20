@@ -1,0 +1,94 @@
+.newsTable {
+  display: flex;
+  justify-content: center;
+
+  &-content {
+    max-width: 900px;
+
+    &-col {
+      display: flex;
+      justify-content: center;
+      min-height: 250px;
+
+      & a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+
+
+  &-box {
+    width: 100%;
+    max-width: 400px;
+    min-height: 250px;
+    border-radius: 20px;
+    padding: 25px 30px 25px 30px;
+    box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+    margin-bottom: 40px;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.2s ease-out;
+
+      &:hover {
+        transition: all 0.2s;
+        transform: scale(1.02);
+      }
+    }
+
+    &-text {
+
+      &-title {
+        font-family: 'NanumSquareNeo-Variable';
+        font-size: 16pt;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      &-content {
+
+      }
+
+      &-time {
+
+      }
+    }
+  }
+}
+
+// 로더
+.loader {
+  display: flex;
+  justify-content: center;
+
+    &-col {
+      display: flex;
+      justify-content: center;
+    }
+
+    &-box {
+      border-radius: 20px;
+      max-width: 400px;
+      min-height: 250px;
+      background-color: rgb(52, 52, 52);
+      padding: 25px 30px 25px 30px;
+      box-shadow: rgba(0, 0, 0, 0.147) 0px 5px 15px;
+      margin-bottom: 40px;
+    }
+
+    &-text {
+
+      &-title {
+        background-color: rgb(81, 81, 81);
+        height: 43px;
+        color: rgba(250, 235, 215, 0);
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+      &-content {
+        background-color: rgb(81, 81, 81);
+        height: 25px;
+        color: rgba(250, 235, 215, 0);
+        border-radius: 20px;
+      }
+    }
+}
