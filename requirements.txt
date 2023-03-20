@@ -10,7 +10,7 @@ dj-rest-auth==2.2.5
 Django==3.2.13
 django-allauth==0.50.0
 django-cors-headers==3.13.0
-django-heroku==0.3.1
+# django-heroku==0.3.1
 djangorestframework==3.14.0
 djangorestframework-jwt==1.11.0
 drf-spectacular==0.24.2
@@ -19,7 +19,7 @@ idna==3.4
 inflection==0.5.1
 jsonschema==4.17.0
 oauthlib==3.2.2
-psycopg2==2.9.5
+# psycopg2==2.9.5
 pycparser==2.21
 PyJWT==1.7.1
 pyrsistent==0.19.2
